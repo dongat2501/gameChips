@@ -1,0 +1,204 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+ul, li {
+  list-style: none; }
+
+body {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif; }
+
+.wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url("../img/bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+input, button, select {
+  font-size: 15px; }
+  input:focus, button:focus, select:focus {
+    outline: none; }
+
+.flex, .flex-align-center, .flex-center, .flex-between, .flex-justify-center {
+  display: -webkit-box;
+  display: flex; }
+
+.flex-align-center, .flex-center, .flex-between {
+  -webkit-box-align: center;
+          align-items: center; }
+
+.flex-justify-center, .flex-center {
+  -webkit-box-pack: center;
+          justify-content: center; }
+
+.flex-between {
+  -webkit-box-pack: justify;
+          justify-content: space-between; }
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5; }
+
+.btn-primary {
+  width: 218px;
+  height: 56px;
+  border: 0;
+  background: #DCE23E;
+  font-size: 22px;
+  color: #000;
+  letter-spacing: 2px;
+  border-radius: 30px; }
+
+.btn-default {
+  width: 193px;
+  height: 50px;
+  border-radius: 30px;
+  background: #fff;
+  border: none;
+  color: rgba(34, 34, 34, 0.75);
+  font-size: 14px;
+  letter-spacing: 2px; }
+
+.btn-transparent {
+  background: transparent;
+  border: 1px solid transparent; }
+
+.container-custom {
+  width: 100vw;
+  max-width: 375px;
+  margin: 0 auto; }
+
+.deep-yellow {
+  color: #EED12F; }
+
+.blue {
+  color: #4FABFA; }
+
+.green {
+  color: #2FD252; }
+
+.red {
+  color: #F66E36; }
+
+.mt-0 {
+  margin-top: 0 !important; }
+
+.header {
+  width: 100%;
+  margin-bottom: 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 9; }
+  .header__center {
+    padding: 10px; }
+  .header__btn {
+    padding: 10px;
+    color: #fff;
+    font-size: 24px; }
+  .header__title {
+    color: #fff; }
+
+.logo.logo--two-up .logo__container {
+  overflow: hidden; }
+
+.logo.logo--two-up .logo__img {
+  margin-left: -60px;
+  max-width: 294px; }
+
+.logo__heading {
+  max-width: 153px;
+  margin-left: -60px;
+  margin-top: 70px;
+  font-size: 49px;
+  line-height: calc(45/49);
+  font-weight: 400; }
+
+.logo__img {
+  max-width: 100vw;
+  position: relative; }
+  .logo__img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; }
+    .logo__img img.smallest-cookie {
+      width: 40px;
+      height: 36px;
+      -o-object-fit: contain;
+         object-fit: contain;
+      left: calc(50% - 70px);
+      bottom: 25px; }
+
+.logo__absolute {
+  position: absolute; }
+
+.img-group__picture {
+  max-width: 185px;
+  margin: 0 auto; }
+  .img-group__picture img {
+    -o-object-fit: contain;
+       object-fit: contain; }
+
+.img-group__container {
+  margin-top: -20px;
+  overflow: hidden; }
+
+.img-group__smallest {
+  height: 60px; }
+
+.img-group__smaller {
+  margin-top: -25px;
+  height: 85px; }
+
+.img-group__small {
+  margin-top: -35px;
+  height: 130px; }
+
+.img-group__big {
+  margin-top: -180px;
+  margin-left: calc(100% - 90px); }
+
+.btn-group {
+  margin-top: -40px; }
+  .btn-group button {
+    display: block;
+    margin: 0 auto 10px; }
+    .btn-group button.btn-primary {
+      margin-bottom: 30px; }
+
+.list-number {
+  margin-bottom: 65px; }
+  .list-number.list--two-up .list-number__item {
+    display: -webkit-box;
+    display: flex; }
+  .list-number.list--two-up .list-content {
+    margin-top: 7px; }
+  .list-number .list-order {
+    margin-right: 5px;
+    font-size: 26px;
+    line-height: calc(20/28); }
+  .list-number .list-content {
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 300;
+    letter-spacing: 0.5px; }
+  .list-number__item {
+    padding: 8px 8px 8px 15px; }
+  .list-number__group-img {
+    max-height: 265px; }
+
+.bg-dark-custom {
+  padding: 10px 10px 15px 15px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: rgba(0, 0, 0, 0.4); }
