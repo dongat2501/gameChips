@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>Selfie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/main.min.css">
-    <link rel="stylesheet" href="../css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="../../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../js/javascript.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -22,7 +21,7 @@
                     </button>
                 </div>
                 <div class="header__center">
-                    <h3 class="title header__title">How to Play</h3>
+                    <h3 class="title header__title">Share with Friends</h3>
                 </div>
                 <div class="header__right">
                     <button class="btn-transparent header__btn"> 
@@ -33,37 +32,34 @@
         </header>
         <main class="main">
             <section class="logo logo--two-up logo--game">
-                <div class=" container-custom flex-align-center flex-between logo__container">
-                    <div class="logo__img">
-                        <img src="../img/logo.png" />
-                    </div>
-                    <h3 class="flex-center logo__sub-heading">
-                        <span class="mr-5">20</span>
-                        <img src="../img/clock.png" />
+                <div class=" container-custom flex-align-center logo__container">
+                    <h3 class="flex-center logo__heading logo__heading--center">
+                        <span class="deep-yellow">SMILE !</span>
                     </h3>
                 </div>
             </section>
-            <section class="face-block">
+            <section class="mt-0 face-block">
                 <div class="face-block__container">
-                    <div class="face-block__img">
-                        <img src="../img/face.png" />
+                    <div class="face-block__top">
+                        <p class="large white-text">
+                            I did it! 
+                            <span class="blue">#CASPKCookieSweepstakes</span>
+                        </p>
                     </div>
-                    <div class="block-center">
-                        <div class="block-center__inner">
-                            <img class="absolute-img" src="../img/cookie-full.png" />
+                    <div class="face-block__img">
+                        <img src="../img/share.png" />
+                    </div>
+                    <div class="face-block__bottom">
+                        <div class="flex-between">
+                            <img src="../img/sub-logo.png" />
+                            <img src="../img/group-selfie.png" />
                         </div>
                     </div>
                 </div>
             </section>
-            <footer class="footer">
-                <div class="footer__container">
-                    <p class="footer__des">
-                        <span class="deep-yellow">Blink</span> when the cookie is
-                        in the <span class="blue">circle</span> to make your own
-                        <span class="deep-yellow"> Mashup Cookie!</span>
-                    </p>
-                </div>
-            </footer>
+            <div class="btn-group mt-0">
+                <button class="btn-primary">SHARE NOW</button>
+            </div>
         </main>
     </div>
 </body>
