@@ -10817,7 +10817,7 @@ function store_points(x, y, k) {
           clockCountdown = setInterval(function () {
             if (timeleft <= 0) {
                 clearInterval(clockCountdown);
-                window.location.pathname = '/welldone.html'
+                // window.location.pathname = '/welldone.html'
                 document.getElementById("clock").innerHTML = 0;
             } else {
                 document.getElementById("clock").innerHTML = timeleft;
