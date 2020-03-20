@@ -8063,7 +8063,7 @@ var mosseFilterResponses = function() {
         if (this.isBlink()) {
             eyesObj.left.blink = true;
             eyesObj.right.blink = true;
-            clearInterval(clockCountdown);
+            // clearInterval(clockCountdown);
             // $('#cookie').stop();
             // window.location.pathname = '/welldone.html';
 
@@ -8076,10 +8076,21 @@ var mosseFilterResponses = function() {
       blinkCount ++;
       document.getElementById('blink-count').innerHTML = blinkCount;
       inprogress = true;
-      // $('#cookie').pause();
-      // addTopting('#toping1_outside')
       setTimeout(function(){ inprogress=false }, 2000);
+      $('#cookie').stop();
+      addToping('#toping' +blinkCount+'_outside',blinkCount);
+      if(blinkCount>=4) return;
+      setTimeout(function(){ animateDiv() }, 700)
     }
+    function addToping(id,index) {
+      console.log('add toping', $(id),centerX,centerY)
+      $(id).animate({ left: centerX, top: centerY }, 500,function(){
+        setTimeout(function(){
+          $(id).css("display", "none");
+          $('#toping'+index).css("display", "block");
+        }, 100)
+      });
+  }
     /**
      *
      * @param value
@@ -10794,7 +10805,7 @@ function store_points(x, y, k) {
      * Initializ es all needed dom elements and begins the loop
      * @param {URL} videoStream - The video stream to use
      */
-    var timeleft = 60;
+    var timeleft = 30;
   
     function init(videoStream) {
         videoElement = document.querySelector('video');
@@ -10806,6 +10817,7 @@ function store_points(x, y, k) {
           clockCountdown = setInterval(function () {
             if (timeleft <= 0) {
                 clearInterval(clockCountdown);
+                window.location.pathname = '/welldone.html'
                 document.getElementById("clock").innerHTML = 0;
             } else {
                 document.getElementById("clock").innerHTML = timeleft;
