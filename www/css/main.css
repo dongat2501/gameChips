@@ -351,8 +351,12 @@ input, button, select {
   top: 10px;
   right: 10px; }
 
-.topping-outside{
+.full-absolute {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  width: 60px;
-  z-index:100 !important;
-}
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3; }
