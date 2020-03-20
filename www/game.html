@@ -11,13 +11,17 @@
     <link rel="stylesheet" href="css/main.min.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/webgazer.js"></script>
+    <!-- <script src="./js/webgazer.js"></script> -->
 </head>
 
 <body>
     <video id="webgazerVideoFeed" style="position: fixed; z-index: 100; width: 100px;" autoplay playsinline></video>
     <canvas id="myCanvas" style="display:none"></canvas>
     <div class="wrapper">
+        <img class="topping topping-green .topping-outside" id="toping1_outside" src="img/green.png" />
+        <img class="topping topping-red .topping-outside" id="toping2_outside" src="img/red.png" />
+        <img class="topping topping-blue .topping-outside" id="toping3_outside" src="img/blue.png" />
+        <img class="topping topping-orange .topping-outside" id="toping4_outside" src="img/orange.png" />
         <header class="header">
             <div class="flex-between flex-align-center header__container">
                 <div class="header__left">
@@ -53,13 +57,13 @@
                         <img src="img/face.png" />
                     </div>
                     <div class="block-center">
-                        <div class="block-center__inner">
+                        <div class="block-center__inner" id="center">
                             <div class="absolute-img" id="cookie">
                                 <img style="width: 100%;" src="img/coockie-empty.png" />
-                                <img class="topping topping-blue" src="img/blue.png" /> 
-                                <img class="topping topping-green" src="img/green.png" /> 
-                                <img class="topping topping-orange" src="img/orange.png" /> 
-                                <img class="topping topping-red" src="img/red.png" /> 
+                                <img class="topping topping-blue" src="img/blue.png" />
+                                <img class="topping topping-green" src="img/green.png" />
+                                <img class="topping topping-orange" src="img/orange.png" />
+                                <img class="topping topping-red" src="img/red.png" />
                             </div>
                         </div>
                     </div>
@@ -81,13 +85,15 @@
 
 </html>
 <script>
+    var centerX, centerY;
     $(document).ready(function () {
         animateDiv();
+        getCentral();
         window.localStorage.clear();
         var tracker = new webgazer.tracker.ClmGaze();
         var blinkDetector = new webgazer.BlinkDetector();
         console.log(blinkDetector, tracker)
-  
+
         webgazer.setRegression('ridge') /* currently must set regression and tracker */
             .setTracker('clmtrackr')
             .setGazeListener(function (data, clock) {
@@ -129,9 +135,26 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     function animateDiv() {
+        console.log($('#cookie'));
+
         $('#cookie').animate({ bottom: getRandomInt(-300, 300), left: 0 }, 2000, function () {
             animateDiv();
+            addTopting('#toping2_outside')
         });
 
     };
+    function getCentral() {
+        var centerElement = $('#center');
+        var offset = centerElement.offset();
+        var width = centerElement.width();
+        var height = centerElement.height();
+
+        centerX = offset.left + width / 2;
+        centerY = offset.top + height / 2;
+        console.log(centerX, centerY);
+    }
+    function addTopting(id) {
+        console.log('add toping', $(id),centerX,centerY)
+        $(id).animate({ left: centerX, top: centerY }, 2000);
+    }
 </script>

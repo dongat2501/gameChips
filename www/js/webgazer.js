@@ -25,7 +25,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-var downloadTimer;
+var clockCountdown, loop,paused=false,inprogress=false;
 var objectdetect = (function() {
 	"use strict";
     	
@@ -8063,16 +8063,23 @@ var mosseFilterResponses = function() {
         if (this.isBlink()) {
             eyesObj.left.blink = true;
             eyesObj.right.blink = true;
-            blinkCount ++;
-            // document.getElementById('blink-count').innerHTML = blinkCount;
-            // console.log('blink: ',blinkCount)
-            clearInterval(downloadTimer);
-            $('#cookie').stop();
-            window.location.pathname = '/welldone.html';
+            clearInterval(clockCountdown);
+            // $('#cookie').stop();
+            // window.location.pathname = '/welldone.html';
+
+            blinked();
         }
         return eyesObj;
     };
-
+    function blinked(){
+      if(inprogress) {return};
+      blinkCount ++;
+      document.getElementById('blink-count').innerHTML = blinkCount;
+      inprogress = true;
+      // $('#cookie').pause();
+      // addTopting('#toping1_outside')
+      setTimeout(function(){ inprogress=false }, 2000);
+    }
     /**
      *
      * @param value
@@ -10452,7 +10459,7 @@ function store_points(x, y, k) {
     // loop parameters
     var clockStart = performance.now();
     webgazer.params.dataTimestep = 50;
-    var paused = false;
+    // var paused = false;
     //registered callback for loop
     var nopCallback = function(data, time) {};
     var callback = nopCallback;
@@ -10642,7 +10649,7 @@ function store_points(x, y, k) {
     var smoothingVals = new webgazer.util.DataWindow(4);
     var k = 0;
 
-    function loop() {
+    loop  = function(){
         var gazeData = getPrediction();
         var elapsedTime = performance.now() - clockStart;
 
@@ -10674,7 +10681,6 @@ function store_points(x, y, k) {
             //Check that the eyes are inside of the validation box
             checkEyesInValidationBox();
         }
-
         if (!paused) {
             //setTimeout(loop, webgazer.params.dataTimestep);
             requestAnimationFrame(loop);
@@ -10797,9 +10803,9 @@ function store_points(x, y, k) {
           videoElement.srcObject = videoStream;
 
           //countdown clock
-          downloadTimer = setInterval(function () {
+          clockCountdown = setInterval(function () {
             if (timeleft <= 0) {
-                clearInterval(downloadTimer);
+                clearInterval(clockCountdown);
                 document.getElementById("clock").innerHTML = 0;
             } else {
                 document.getElementById("clock").innerHTML = timeleft;
@@ -10922,7 +10928,10 @@ function store_points(x, y, k) {
         paused = true;
         return webgazer;
     };
-
+    webgazer.continue = function() {
+      paused = false;
+      return webgazer;
+  };
     /**
      * Resumes collection of data and predictions if paused
      * @returns {webgazer} this
