@@ -251,7 +251,7 @@ input, button, select {
     height: 62.7vh;
     border-radius: 12px;
     overflow: hidden; }
-    .face-block__img img {
+    .face-block__img img, .face-block__img video {
       width: 100%;
       height: 100%;
       -o-object-fit: cover;
