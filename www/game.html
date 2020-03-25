@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <video id="webgazerVideoFeed" style="position: fixed; z-index: 100; width: 100px;" autoplay playsinline></video>
+    <!-- <video id="webgazerVideoFeed" style="position: fixed; z-index: 100; width: 100px;" autoplay playsinline></video> -->
     <canvas id="myCanvas" style="display:none"></canvas>
     <div class="wrapper">
         
@@ -52,9 +52,10 @@
                 <div class="face-block__container">
                     <div class="face-block__img">
                         <!-- <img src="img/face.png" /> -->
-                        <video loop="true" autoplay="autoplay" muted>
+                        <video id="webgazerVideoFeed" autoplay playsinline></video>
+                        <!-- <video loop="true" autoplay="autoplay" muted>
                             <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                          </video>
+                          </video> -->
                     </div>
                     <div class="block-center">
                         <div class="block-center__inner" id="center">
@@ -150,7 +151,7 @@
         var centerElement = $('#center');
         var offset = centerElement.offset();
         var width = centerElement.width();
-        var height = centerElement.height();
+        var height = 0  
 
         centerX = offset.left + width / 2;
         centerY = offset.top + height / 2;
