@@ -335,6 +335,12 @@ input, button, select {
     left: 80px;
 }
 
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .p {
     font-size: 14px;

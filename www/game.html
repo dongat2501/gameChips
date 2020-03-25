@@ -17,8 +17,20 @@
 <body>
     <!-- <video id="webgazerVideoFeed" style="position: fixed; z-index: 100; width: 100px;" autoplay playsinline></video> -->
     <canvas id="myCanvas" style="display:none"></canvas>
+    <audio id="blink-right">
+        <source src="./sound/Blink-Right.ogg" type="audio/ogg">
+      </audio>
+      <audio id="blink-wrong">
+        <source src="./sound/Blink-Wrong.ogg" type="audio/ogg">
+      </audio>
+      <audio id="game-lose">
+        <source src="./sound/Game-Lose.ogg" type="audio/ogg">
+      </audio>
+      <audio id="game-win">
+        <source src="./sound/Game-Win.ogg" type="audio/ogg">
+      </audio>
     <div class="wrapper">
-        
+
         <header class="header">
             <div class="flex-between flex-align-center header__container">
                 <div class="header__left">
@@ -58,19 +70,28 @@
                           </video> -->
                     </div>
                     <div class="block-center">
-                        <div class="block-center__inner" id="center">
+                        <div class="block-center__inner">
+                            <div class="absolute-center" id="center_circle"><b>center circle</b></div>
                             <div class="full-absolute">
-                                <img class="topping topping-green .topping-outside" id="toping1_outside" src="img/green.png" />
-                                <img class="topping topping-red .topping-outside" id="toping2_outside" src="img/red.png" />
-                                <img class="topping topping-blue .topping-outside" id="toping3_outside" src="img/blue.png" />
-                                <img class="topping topping-orange .topping-outside" id="toping4_outside" src="img/orange.png" />
+                                <img class="topping topping-green .topping-outside" id="toping1_outside"
+                                    src="img/green.png" />
+                                <img class="topping topping-red .topping-outside" id="toping2_outside"
+                                    src="img/red.png" />
+                                <img class="topping topping-blue .topping-outside" id="toping3_outside"
+                                    src="img/blue.png" />
+                                <img class="topping topping-orange .topping-outside" id="toping4_outside"
+                                    src="img/orange.png" />
                             </div>
                             <div class="absolute-img" id="cookie">
+                                <div class="absolute-center" id="center_cookie"><b>center cookie</b></div>
                                 <img style="width: 100%;" src="img/coockie-empty.png" />
-                                <img class="topping topping-blue" style="display:none" id="toping3"  src="img/blue.png" />
-                                <img class="topping topping-green" style="display:none" id="toping1" src="img/green.png" />
-                                <img class="topping topping-orange"style="display:none" id="toping4"  src="img/orange.png" />
-                                <img class="topping topping-red"style="display:none" id="toping2" src="img/red.png" />
+                                <img class="topping topping-blue" style="display:none" id="toping3"
+                                    src="img/blue.png" />
+                                <img class="topping topping-green" style="display:none" id="toping1"
+                                    src="img/green.png" />
+                                <img class="topping topping-orange" style="display:none" id="toping4"
+                                    src="img/orange.png" />
+                                <img class="topping topping-red" style="display:none" id="toping2" src="img/red.png" />
                             </div>
                         </div>
                     </div>
@@ -148,14 +169,12 @@
 
     };
     function getCentral() {
-        var centerElement = $('#center');
+        var centerElement = $('#center_circle');
         var offset = centerElement.offset();
         var width = centerElement.width();
-        var height = 0  
-
-        centerX = offset.left + width / 2;
-        centerY = offset.top + height / 2;
+        centerX = offset.left
+        centerY = offset.top
         console.log(centerX, centerY);
     }
-   
+
 </script>

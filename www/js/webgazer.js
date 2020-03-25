@@ -8063,9 +8063,6 @@ var mosseFilterResponses = function() {
         if (this.isBlink()) {
             eyesObj.left.blink = true;
             eyesObj.right.blink = true;
-            // clearInterval(clockCountdown);
-            // $('#cookie').stop();
-            // window.location.pathname = '/welldone.html';
 
             blinked();
         }
@@ -8079,17 +8076,47 @@ var mosseFilterResponses = function() {
       setTimeout(function(){ inprogress=false }, 2000);
       $('#cookie').stop();
       addToping('#toping' +blinkCount+'_outside',blinkCount);
-      if(blinkCount>=4) return;
-      setTimeout(function(){ animateDiv() }, 700)
+      if(blinkCount >= 4){   
+        playAudio('/sound/Game-Win.mp3');
+        setTimeout(function(){ 
+          window.location.pathname = '/welldone.html'
+       }, 700);  return;}
+      setTimeout(function(){ animateDiv() }, 1000)
     }
     function addToping(id,index) {
-      console.log('add toping', $(id),centerX,centerY)
-      $(id).animate({ left: centerX, top: centerY }, 500,function(){
+      var exact = caculatePosition();
+      console.log(exact)
+      if(exact>30){
+        playAudio('/sound/Blink-Right.mp3');
+      }else{
+        playAudio('/sound/Blink-Wrong.mp3');
+      }
+      $(id).animate({ left: centerX, top: centerY }, 800,function(){
         setTimeout(function(){
           $(id).css("display", "none");
           $('#toping'+index).css("display", "block");
-        }, 100)
+        }, 200)
       });
+  }
+  function caculatePosition(){
+    var cookieWidth = 178;
+    var cookieEl= $('#center_cookie')
+    var cookieY = cookieEl.offset().top;
+    return (cookieWidth - (Math.abs(cookieY - centerY)))/cookieWidth * 100;
+  }
+  var audio;
+  function playAudio(url){
+    if(audio){
+      x.pause();x.currentTime = 0;
+    }
+    var audio = new Audio(url);
+    audio.crossOrigin = 'anonymous';
+    audio.play().then(s=>{
+      console.log(s)
+    }).catch(err=>{
+      console.log(err)
+    });
+
   }
     /**
      *
@@ -10817,7 +10844,8 @@ function store_points(x, y, k) {
           clockCountdown = setInterval(function () {
             if (timeleft <= 0) {
                 clearInterval(clockCountdown);
-                // window.location.pathname = '/welldone.html'
+                playAudio('/sound/Game-Lose.mp3');
+                window.location.pathname = '/welldone.html'
                 document.getElementById("clock").innerHTML = 0;
             } else {
                 document.getElementById("clock").innerHTML = timeleft;
@@ -10825,6 +10853,7 @@ function store_points(x, y, k) {
             timeleft -= 1;
         }, 1000);
         } else {
+          alert('Browser not supported by getUserMedia')
           throw "Browser not supported by getUserMedia";
         }
         // alert(videoStream)
@@ -10885,7 +10914,7 @@ function store_points(x, y, k) {
     webgazer.begin = function(onFail) {
         loadGlobalData();
       
-        onFail = onFail || function() {console.log('No stream')};
+        onFail = onFail || function() { alert('Please use safari if ios, chorme if android and allow camera for the game');console.log('No stream')};
 
         if (debugVideoLoc) {
             init(debugVideoLoc);
