@@ -164,9 +164,10 @@ input, button, select {
         max-width: 155px;
         margin-left: -60px;
         margin-top: 70px;
-        font-size: 49px;
-        line-height: calc(45/49);
+        font-size: 30px;
+        line-height: calc(28/30);
         font-weight: 400;
+        color: #fff;
         &.logo__heading--center {
             max-width: 100vw;
             margin-left: auto;
@@ -246,6 +247,10 @@ input, button, select {
     margin-bottom: 35px;
 }
 
+.mb-25 {
+    margin-bottom: 25px;
+}
+
 .btn-group {
     button {
         display: block;
@@ -257,7 +262,7 @@ input, button, select {
 }
 
 .list-number {
-    margin-bottom: 65px;
+    margin-bottom: 40px;
     &.list--two-up {
         .list-number__item {
             display: flex;
@@ -268,17 +273,18 @@ input, button, select {
     }
     .list-order {
         margin-right: 5px;
-        font-size: 26px;
-        line-height: calc(20/28);
+        font-size: 14px;
+        line-height: calc(20/14);
     }
     .list-content {
         color: #fff;
-        font-size: 13.5px;
+        font-size: 14px;
         font-weight: 300;
-        letter-spacing: 0.5px;
+        letter-spacing: 0px;
+        line-height: calc(20/14);
     }
     &__item {
-        padding: 8px 8px 8px 15px;
+        padding: 8px 25px;
     }
     &__group-img {
         max-height: 265px;
