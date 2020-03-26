@@ -1,4 +1,4 @@
-
+@import "../css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css";
 
 * {
     padding: 0;
@@ -78,14 +78,14 @@ input, button, select {
 }
 
 .btn-default {
-    width: 193px;
+    min-width: 162px;
     height: 50px;
     border-radius: 30px;
-    background: #fff;
-    border: none;
-    color: rgba($color: #222, $alpha: 0.75);
+    background: rgba($color: #00182C, $alpha: 0.2);
+    border: 3px solid #1BA4FC;
+    color: #fff;
     font-size: 14px;
-    letter-spacing: 2px;
+    letter-spacing: 0px;
 
 }
 
@@ -144,6 +144,7 @@ input, button, select {
 .logo {
     position: relative;
     z-index: 1;
+    overflow: hidden;
     &.logo--two-up {
         .logo__container {
             overflow: hidden;
@@ -182,6 +183,7 @@ input, button, select {
         color: #fff;
     }
     &__img {
+        margin-top: -30px;
         max-width: 100vw;
         position: relative;
         img {
@@ -240,8 +242,11 @@ input, button, select {
     }
 }
 
+.mb-35 {
+    margin-bottom: 35px;
+}
+
 .btn-group {
-    margin-top: -40px;
     button {
         display: block;
         margin: 0 auto 10px;

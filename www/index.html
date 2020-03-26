@@ -8,7 +8,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/main.js"></script>
 </head>
@@ -33,34 +34,24 @@
             </div>
         </header>
         <main class="main">
-            <section class="logo">
+            <section class="logo mb-35">
                 <div class=" container-custom logo__container">
                     <div class="logo__img">
-                        <img src="../img/logo.png" />
-                        <img class="logo__absolute smallest-cookie" src="../img/cookie.png" />
+                        <img src="img/logo.png" />
+                        <img class="logo__absolute smallest-cookie" src="img/cookie.png" />
                     </div>
                 </div>
             </section>
-            <div class="img-group">
-                <div class="img-group__container">
-                    <div class="img-group__picture">
-                        <img class="img-group__smallest" src="../img/cookie.png" />
-                    </div>
-                    <div class="img-group__picture">
-                        <img class="img-group__smaller" src="../img/cookie.png" />
-                    </div>
-                    <div class="img-group__picture">
-                        <img class="img-group__small" src="../img/cookie.png" />
-                    </div>
-                    <div class="img-group__picture">
-                        <img class="img-group__big" src="../img/cookie.png" />
-                    </div>
-                </div>
-            </div>
+            
+            
             <div class="btn-group">
-                <button class="btn-primary btn-router" url="game.html">PLAY NOW</button>
-                <button class="btn-default btn-router" url="how.html">HOW TO PLAY</button>
-                <button class="btn-default btn-router" url="rules.html">COMPETITION RULES</button>
+                <button class="btn-transparent"><a href="game.html"><img src="img/play-now.png"/></a></button>
+                <!-- <button class="btn-primary btn-router" url="game.html">PLAY NOW</button> -->
+                <div class="flex-between">
+                    <button class="btn-default btn-router" url="rules.html">Competition  Rules</button>
+                    <button class="btn-default btn-router" url="how.html">How to Play</button>
+                </div>
+                
             </div>
         </main>
     </div>
