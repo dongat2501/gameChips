@@ -81,7 +81,7 @@ input, button, select {
     min-width: 162px;
     height: 50px;
     border-radius: 30px;
-    background: rgba($color: #00182C, $alpha: 0.2);
+    background: #0E6AA1;
     border: 3px solid #1BA4FC;
     color: #fff;
     font-size: 14px;
@@ -105,7 +105,7 @@ input, button, select {
 }
 
 .blue {
-    color: #4FABFA;
+    color: #38E0FF;
 }
 
 .green {
@@ -118,6 +118,10 @@ input, button, select {
 
 .mt-0 {
     margin-top: 0 !important;
+}
+
+.mt--25 {
+    margin-top: -25px;
 }
 
 .header {
@@ -214,6 +218,10 @@ input, button, select {
     margin-bottom: 10px;
 }
 
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
 .img-group {
     &__picture {
         max-width: 185px;
@@ -268,7 +276,9 @@ input, button, select {
             display: flex;
         }
         .list-content {
+            max-width: 175px;
             margin-top: 7px;
+            text-align: center;
         }
     }
     .list-order {
@@ -287,15 +297,19 @@ input, button, select {
         padding: 8px 25px;
     }
     &__group-img {
-        max-height: 265px;
+        max-height: 260px;
+        padding-right: 5px;
     }
 }
 
 .bg-dark-custom {
-    padding: 10px 10px 15px 15px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background: rgba($color: #000000, $alpha: 0.4);
+    max-width: 315px;
+    margin: 0 auto;
+    padding: 15px 10px 35px;
+    border-radius: 31px;
+    background: #1BA3FC;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .face-block {
@@ -353,10 +367,18 @@ input, button, select {
     transform: translate(-50%, -50%);
 }
 
+.small-p {
+    font-size: 12px;
+}
+
 .p {
     font-size: 14px;
     font-weight: 400;
     line-height: calc(20/14);
+}
+
+.large-p {
+    font-size: 16px;
 }
 
 .white-text {
