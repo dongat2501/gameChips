@@ -25,7 +25,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-var clockCountdown, loop,paused=false,inprogress=false;
+var clockCountdown, loop,paused=false,inprogress=false,playAudio
 var objectdetect = (function() {
 	"use strict";
     	
@@ -8045,6 +8045,7 @@ var mosseFilterResponses = function() {
      * @returns {*}
      */
     var blinkCount = 0;
+    var exactCount = 0;
     webgazer.BlinkDetector.prototype.detectBlink = function(eyesObj) {
         if (!eyesObj) {
             return eyesObj;
@@ -8076,17 +8077,24 @@ var mosseFilterResponses = function() {
       setTimeout(function(){ inprogress=false }, 2000);
       $('#cookie').stop();
       addToping('#toping' +blinkCount+'_outside',blinkCount);
-      if(blinkCount >= 4){   
+      if(blinkCount >= 4 && exactCount>2){   
         playAudio('/sound/Game-Win.mp3');
         setTimeout(function(){ 
           window.location.pathname = '/welldone.html'
-       }, 700);  return;}
+       }, 1000);  return;}
+       else  if(blinkCount >= 4 && exactCount<=2){   
+        playAudio('/sound/Game-Lose.mp3');
+        setTimeout(function(){ 
+          window.location.pathname = '/play-again.html'
+       }, 1000);  return;
+       }
       setTimeout(function(){ animateDiv() }, 1000)
     }
     function addToping(id,index) {
       var exact = caculatePosition();
       console.log(exact)
       if(exact>30){
+        exactCount++;
         playAudio('/sound/Blink-Right.mp3');
       }else{
         playAudio('/sound/Blink-Wrong.mp3');
@@ -8105,7 +8113,7 @@ var mosseFilterResponses = function() {
     return (cookieWidth - (Math.abs(cookieY - centerY)))/cookieWidth * 100;
   }
   var audio;
-  function playAudio(url){
+  playAudio = function (url){
     if(audio){
       x.pause();x.currentTime = 0;
     }
@@ -10842,15 +10850,18 @@ function store_points(x, y, k) {
 
           //countdown clock
           clockCountdown = setInterval(function () {
-            if (timeleft <= 0) {
-                clearInterval(clockCountdown);
-                playAudio('/sound/Game-Lose.mp3');
-                window.location.pathname = '/welldone.html'
-                document.getElementById("clock").innerHTML = 0;
-            } else {
-                document.getElementById("clock").innerHTML = timeleft;
-            }
             timeleft -= 1;
+            if (timeleft <= 0) {
+              
+                playAudio('/sound/Game-Lose.mp3');
+                window.location.pathname = '/play-again.html'
+                document.getElementById("clock").innerHTML = 0;
+                clearInterval(clockCountdown);
+            } else{
+              document.getElementById("clock").innerHTML = timeleft;
+            }
+               
+           
         }, 1000);
         } else {
           alert('Browser not supported by getUserMedia')
