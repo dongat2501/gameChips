@@ -218,6 +218,10 @@ input, button, select {
     margin-bottom: 10px;
 }
 
+.mb-90 {
+    margin-bottom: 90px;
+}
+
 .mb-0 {
     margin-bottom: 0 !important;
 }
@@ -257,6 +261,18 @@ input, button, select {
 
 .mb-25 {
     margin-bottom: 25px;
+}
+
+.try-again {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.play-again-icon {
+    transform: rotate(90deg);
+    display: block;
+    font-size: 25px;
 }
 
 .btn-group {
@@ -458,6 +474,16 @@ input, button, select {
 
 .deep-blue {
     color: #4FABFA;
+}
+
+.font-large-title {
+    font-size: 30px;
+    line-height: calc(28/30);
+}
+
+.font-large-des {
+    font-size: 24px;
+    line-height: calc(20/24);
 }
 
 .face-block__bottom {
