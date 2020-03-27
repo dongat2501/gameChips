@@ -254,6 +254,11 @@ input, button, select {
 .face-block {
   margin-top: -40px;
   margin-bottom: 20px; }
+  .face-block.face-block--selfie {
+    margin-bottom: 0;
+    padding-top: 20px;
+    min-height: calc(100vw + 100px);
+    background: #0E6AA1; }
   .face-block__container {
     position: relative; }
   .face-block .block-center {
@@ -275,7 +280,6 @@ input, button, select {
       border-radius: 50%; }
   .face-block__img {
     height: 100vw;
-    border-radius: 12px;
     overflow: hidden; }
     .face-block__img img, .face-block__img video {
       width: 100%;
@@ -354,9 +358,12 @@ input, button, select {
 .face-block__top {
   position: absolute;
   width: 100%;
-  padding: 10px 30px;
+  padding: 10px 20px;
   left: 0;
   top: 0; }
+
+.deep-blue {
+  color: #4FABFA; }
 
 .face-block__bottom {
   position: absolute;
@@ -366,11 +373,9 @@ input, button, select {
   bottom: 0; }
 
 .large {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 400;
   white-space: nowrap; }
-  .large span {
-    font-size: 18px; }
 
 .topping {
   position: absolute;
