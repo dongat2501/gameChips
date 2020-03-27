@@ -214,6 +214,9 @@ input, button, select {
     .btn-group button.btn-primary {
       margin-bottom: 30px; }
 
+.center-text {
+  text-align: center; }
+
 .list-number {
   margin-bottom: 40px; }
   .list-number.list--two-up .list-number__item {
@@ -329,11 +332,9 @@ input, button, select {
   padding-bottom: 25px; }
 
 .camera-block {
-  padding: 15px 20px;
-  width: 260px;
-  margin: 0 auto 10px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
+  padding: 90px 20px 45px;
+  margin: -80px auto 0px;
+  background: #0E6AA1;
   text-align: center; }
 
 .sub-title {
@@ -349,10 +350,6 @@ input, button, select {
   border: none; }
   .btn-square i {
     font-size: 34px; }
-
-.content-block {
-  margin-top: -30px;
-  margin-bottom: 20px; }
 
 .face-block__top {
   position: absolute;

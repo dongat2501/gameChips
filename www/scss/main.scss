@@ -271,6 +271,10 @@ input, button, select {
     }
 }
 
+.center-text {  
+    text-align: center;
+}
+
 .list-number {
     margin-bottom: 40px;
     &.list--two-up {
@@ -411,11 +415,9 @@ input, button, select {
 }
 
 .camera-block {
-    padding: 15px 20px;
-    width: 260px;
-    margin: 0 auto 10px;
-    border-radius: 12px;
-    background: rgba($color: #000000, $alpha: 0.3);
+    padding: 90px 20px 45px;
+    margin: -80px auto 0px;
+    background: #0E6AA1;
     text-align: center;
 }
 
@@ -436,10 +438,10 @@ input, button, select {
     }
 }
 
-.content-block {
-    margin-top: -30px;
-    margin-bottom: 20px;
-}
+// .content-block {
+//     margin-top: -30px;
+//     margin-bottom: 20px;
+// }
 
 .face-block__top {
     position: absolute;
