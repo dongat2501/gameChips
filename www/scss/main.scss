@@ -557,24 +557,14 @@ input, button, select {
 }
 .wrapper-clock {
     position: absolute;
-    bottom: 10px;
     background: #fff;
     width: 33px;
     height: 33px;
-    left: 14.5px;
+    left: 15px;
     top: 17.5px;
     border-radius: 50%;
-    &:after {
-        content: '';
-        width: calc(100% - 1px);
-        height: calc(100% - 1px);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        border: 3px solid #fff;
-    }
+       border: 3px solid #fff;
+    
   }
   
   .wrapper-clock , .wrapper-clock  * {
@@ -614,8 +604,7 @@ input, button, select {
   
   .wrapper-clock .mask {
     width: 50%;
-    top: 0.5px;
-    height: calc(100% - 0.25px);
+    height: 100%;
     position: absolute;
     background: inherit;
     opacity: 1;
