@@ -8072,7 +8072,7 @@ var mosseFilterResponses = function() {
     function blinked(){
       if(inprogress) {return};
       blinkCount ++;
-      document.getElementById('blink-count').innerHTML = blinkCount;
+      // document.getElementById('blink-count').innerHTML = blinkCount;
       inprogress = true;
       setTimeout(function(){ inprogress=false }, 2000);
       $('#cookie').stop();
