@@ -1,0 +1,17 @@
+@font-face {
+    font-family: Pluto;
+    src: url(Pluto_Oreo.otf);
+  }
+
+  @font-face {
+    font-family: Monster;
+    src: url(Montserrat-SemiBold.ttf);
+  }
+
+  body, button {
+      font-family: Pluto !important;
+  }
+
+  .title.header__title {
+      font-family: Monster !important;
+  }
