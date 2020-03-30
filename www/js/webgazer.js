@@ -8095,6 +8095,7 @@ var mosseFilterResponses = function() {
       console.log(exact)
       if(exact>30){
         exactCount++;
+        $('#candy'+index).css("display", "none");
         playAudio('/sound/Blink-Right.mp3');
       }else{
         playAudio('/sound/Blink-Wrong.mp3');
