@@ -62,20 +62,17 @@
                         </p>
                     </div>
                     <div class="face-block__img">
-                        <!-- <img src="img/share.png" /> -->
-                        <video loop="true" autoplay="autoplay" muted>
-                            <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                        <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
                         </video>
                     </div>
                     <div id="container">
-                        <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
-                        </video>
+                       
                         <canvas id="overlay" width="400" height="300"></canvas>
                     </div>
-                    <div id="controls">
+                    <!-- <div id="controls">
                         <input class="btn" type="button" value="wait, loading video" disabled="disabled"
                             onclick="startVideo()" id="startbutton"></input>
-                    </div>
+                    </div> -->
                     <div class="face-block__bottom">
                         <div class="flex-between">
                             <img src="img/sub-logo.png" />
@@ -100,9 +97,11 @@
     /********** check and set up video/webcam **********/
 
     function enablestart() {
-        var startbutton = document.getElementById('startbutton');
-        startbutton.value = "start";
-        startbutton.disabled = null;
+        setTimeout(() => {
+            startVideo();
+        }, 2000);
+        
+       
     }
 
     function adjustVideoProportions() {
@@ -184,7 +183,7 @@
 
         var er = ec.meanPredict(cp);
         if (er) {
-            console.log(er[3].value);
+            // console.log(er[3].value);
             if (er[3].value > 0.75) {
                 vid.pause();
                 ctrack.stop();
