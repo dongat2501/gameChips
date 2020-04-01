@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Selfie</title>
@@ -9,10 +10,22 @@
         rel="stylesheet"> -->
     <link rel="stylesheet" href="css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.min.css">
-    <link rel="stylesheet" href="css/font/font.css" >
+    <link rel="stylesheet" href="css/font/font.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/libs/utils.js"></script>
+    <script src="./js/clmtrackr.js"></script>
+    <script src="./js/models/model_pca_20_svm.js"></script>
+    <script src="./js/libs/Stats.js"></script>
+    <script src="./js/emotion_classifier.js"></script>
+    <script src="./js/emotionmodel.js"></script>
+    <style>
+        #overlay {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
     <div class="wrapper">
         <header class="header">
@@ -26,7 +39,7 @@
                     <h3 class="title header__title">Share with Friends</h3>
                 </div>
                 <div class="header__right">
-                    <button class="btn-transparent header__btn"> 
+                    <button class="btn-transparent header__btn">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -51,6 +64,15 @@
                     <div class="face-block__img">
                         <img src="img/share.png" />
                     </div>
+                    <div id="container">
+                        <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
+                        </video>
+                        <canvas id="overlay" width="400" height="300"></canvas>
+                    </div>
+                    <div id="controls">
+                        <input class="btn" type="button" value="wait, loading video" disabled="disabled"
+                            onclick="startVideo()" id="startbutton"></input>
+                    </div>
                     <div class="face-block__bottom">
                         <div class="flex-between">
                             <img src="img/sub-logo.png" />
@@ -65,4 +87,128 @@
         </main>
     </div>
 </body>
+<script>
+    var vid = document.getElementById('videoel');
+    var vid_width = vid.width;
+    var vid_height = vid.height;
+    var overlay = document.getElementById('overlay');
+    var overlayCC = overlay.getContext('2d');
+
+    /********** check and set up video/webcam **********/
+
+    function enablestart() {
+        var startbutton = document.getElementById('startbutton');
+        startbutton.value = "start";
+        startbutton.disabled = null;
+    }
+
+    function adjustVideoProportions() {
+        // resize overlay and video if proportions are different
+        // keep same height, just change width
+        var proportion = vid.videoWidth / vid.videoHeight;
+        vid_width = Math.round(vid_height * proportion);
+        vid.width = vid_width;
+        overlay.width = vid_width;
+    }
+
+    function gumSuccess(stream) {
+        // add camera stream if getUserMedia succeeded
+        if ("srcObject" in vid) {
+            vid.srcObject = stream;
+        } else {
+            vid.src = (window.URL && window.URL.createObjectURL(stream));
+        }
+        vid.onloadedmetadata = function () {
+            adjustVideoProportions();
+            vid.play();
+        }
+        vid.onresize = function () {
+            adjustVideoProportions();
+            if (trackingStarted) {
+                ctrack.stop();
+                ctrack.reset();
+                ctrack.start(vid);
+            }
+        }
+    }
+
+    function gumFail() {
+        alert("There was some problem trying to fetch video from your webcam. If you have a webcam, please make sure to accept when the browser asks for access to your webcam.");
+    }
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
+
+    // check for camerasupport
+    if (navigator.mediaDevices) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(gumSuccess).catch(gumFail);
+    } else if (navigator.getUserMedia) {
+        navigator.getUserMedia({ video: true }, gumSuccess, gumFail);
+    } else {
+        alert("This demo depends on getUserMedia, which your browser does not seem to support. :(");
+    }
+
+    vid.addEventListener('canplay', enablestart, false);
+
+    /*********** setup of emotion detection *************/
+
+    // set eigenvector 9 and 11 to not be regularized. This is to better detect motion of the eyebrows
+    pModel.shapeModel.nonRegularizedVectors.push(9);
+    pModel.shapeModel.nonRegularizedVectors.push(11);
+
+    var ctrack = new clm.tracker({ useWebGL: true });
+    ctrack.init(pModel);
+    var trackingStarted = false;
+
+    function startVideo() {
+        // start video
+        vid.play();
+        // start tracking
+        ctrack.start(vid);
+        trackingStarted = true;
+        // start loop to draw face
+        drawLoop();
+    }
+
+    function drawLoop() {
+        requestAnimFrame(drawLoop);
+        overlayCC.clearRect(0, 0, vid_width, vid_height);
+        //psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
+        if (ctrack.getCurrentPosition()) {
+            ctrack.draw(overlay);
+        }
+        var cp = ctrack.getCurrentParameters();
+
+        var er = ec.meanPredict(cp);
+        if (er) {
+            console.log(er[3].value);
+            if (er[3].value > 0.75) {
+                vid.pause();
+                ctrack.stop();
+            }
+        }
+    }
+
+    delete emotionModel['disgusted'];
+    delete emotionModel['fear'];
+    var ec = new emotionClassifier();
+    ec.init(emotionModel);
+    var emotionData = ec.getBlank();
+
+
+
+    /******** stats ********/
+
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '0px';
+    document.getElementById('container').appendChild(stats.domElement);
+
+    // update stats on every iteration
+    document.addEventListener('clmtrackrIteration', function (event) {
+        stats.update();
+    }, false);
+
+</script>
+
 </html>
