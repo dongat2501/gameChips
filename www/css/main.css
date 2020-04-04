@@ -293,7 +293,7 @@ input, button, select {
   .face-block__img {
     height: 100vw;
     overflow: hidden; }
-    .face-block__img img, .face-block__img video {
+    .face-block__img img, .face-block__img video, .face-block__img canvas {
       width: 100%;
       height: 100%;
       -o-object-fit: cover;
