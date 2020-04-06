@@ -12,6 +12,7 @@ let body = document.querySelector("body");
 var blinkCount = 0;
 //entry point :
 function main() {
+  console.log(JEEFACETRANSFERAPI)
   JEEFACETRANSFERAPI.init({
     canvasId: "canvas",
     NNCpath: "src/model/",
@@ -33,6 +34,12 @@ function main() {
 function successCallback() {
   // Call next frame
   // document.getElementById("full-page-loader").style.display = "none";
+  var stream = JEEFACETRANSFERAPI.get_videoStream();
+  var videoElement = document.querySelector('video');
+  if ("srcObject" in videoElement) {
+    videoElement.srcObject = stream
+  }
+  console.log('streamstream', stream)
   startGame();
   nextFrame();
   // Add code after API is ready.
@@ -49,7 +56,6 @@ function nextFrame() {
     start_alarm();
     blinked();
     // document.getElementById('blink-count').innerHTML = blinkCount;
-    // console.log("Alarm Called");
     body.style.background = "#f00";
   } else {
     stop_alarm();
@@ -83,15 +89,28 @@ function nextFrame() {
 
 var clockCountdown, paused = false, inprogress = false;
 var timeleft = 30, exactCount = 0;
-var centerX, centerY,audio;
-var soundRight,soundWrong,soundLose,soundWin;
+var centerX, centerY, audio, cookieY, cookieX;
+var soundRight, soundWrong, soundLose, soundWin;
 function startGame() {
   animateDiv();
   getCentral();
-  soundRight =  new sound('/sound/Blink-Right.mp3')
-  soundWrong =  new sound('/sound/Blink-Wrong.mp3')
-  soundLose =  new sound('/sound/Game-Lose.mp3')
-  soundWin =  new sound('/sound/Game-Win.mp3')
+  $('#clock-spinner').addClass('pie spinner')
+  // var soundCustom = new Howl({
+  //   src: ['/sound/Blink-Right.mp3']
+  // });
+  // soundCustom.play();
+  soundRight = new Howl({
+    src: ['/sound/Blink-Right.mp3']
+  });
+  soundWrong = new Howl({
+    src: ['/sound/Blink-Wrong.mp3']
+  });
+  soundLose = new Howl({
+    src: ['/sound/Game-Lose.mp3']
+  });
+  soundWin = new Howl({
+    src: ['/sound/Game-Win.mp3']
+  });
   clockCountdown = setInterval(function () {
     timeleft -= 1;
     if (timeleft <= 0) {
@@ -114,13 +133,13 @@ function blinked() {
   setTimeout(function () { inprogress = false }, 2000);
   $('#cookie').stop();
   addToping('#toping' + blinkCount + '_outside', blinkCount);
-  if (blinkCount >= 4 && exactCount > 2) {
+  if (blinkCount >= 5 && exactCount > 4) {
     soundWin.play();
     setTimeout(function () {
       window.location.pathname = '/welldone.html'
     }, 1000); return;
   }
-  else if (blinkCount >= 4 && exactCount <= 2) {
+  else if (blinkCount >= 5 && exactCount <= 4) {
     soundLose.play();
     setTimeout(function () {
       window.location.pathname = '/play-again.html'
@@ -138,7 +157,7 @@ function addToping(id, index) {
   } else {
     soundWrong.play();
   }
-  $(id).animate({ left: centerX, top: centerY }, 800, function () {
+  $(id).animate({ left: cookieX, top: cookieY }, 800, function () {
     setTimeout(function () {
       $(id).css("display", "none");
       $('#toping' + index).css("display", "block");
@@ -148,7 +167,8 @@ function addToping(id, index) {
 function caculatePosition() {
   var cookieWidth = 178;
   var cookieEl = $('#center_cookie')
-  var cookieY = cookieEl.offset().top;
+  cookieY = cookieEl.offset().top;
+  cookieX = cookieEl.offset().left;
   return (cookieWidth - (Math.abs(cookieY - centerY))) / cookieWidth * 100;
 }
 function getRandomInt(min, max) {
@@ -169,14 +189,14 @@ function getCentral() {
   console.log(centerX, centerY);
 }
 function playAudio(url) {
-  if(audio){
-    audio.pause();audio.currentTime = 0;
+  if (audio) {
+    audio.pause(); audio.currentTime = 0;
   }
   audio = new Audio(url);
   audio.crossOrigin = 'anonymous';
-  audio.play().then(s=>{
+  audio.play().then(s => {
     console.log(s)
-  }).catch(err=>{
+  }).catch(err => {
     console.log(err)
   });
 }
@@ -189,10 +209,10 @@ function sound(src) {
   this.sound.style.display = "none";
   document.body.appendChild(this.sound);
   // this.sound.play();
-  this.play = function(){
-      this.sound.play();
+  this.play = function () {
+    this.sound.play();
   }
-  this.stop = function(){
-      this.sound.pause();
-  }    
+  this.stop = function () {
+    this.sound.pause();
+  }
 }
