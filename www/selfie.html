@@ -19,6 +19,7 @@
     <script src="./js/libs/Stats.js"></script>
     <script src="./js/emotion_classifier.js"></script>
     <script src="./js/emotionmodel.js"></script>
+    <script src="./js/html2canvas.min.js"></script>
     <style>
         #overlay {
             display: none;
@@ -53,7 +54,7 @@
                     </h3>
                 </div>
             </section>
-            <section class="mt-0 face-block face-block--selfie">
+            <section class="mt-0 face-block face-block--selfie" id="selfie">
                 <div class="face-block__container">
                     <div class="face-block__top">
                         <p class="flex-between">
@@ -64,9 +65,10 @@
                     <div class="face-block__img">
                         <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
                         </video>
+                        <canvas id="videoResult"></canvas>
                     </div>
                     <div id="container">
-                       
+
                         <canvas id="overlay" width="400" height="300"></canvas>
                     </div>
                     <!-- <div id="controls">
@@ -82,7 +84,7 @@
                 </div>
             </section>
             <div class="btn-group mt--25">
-                <button class="btn-default">Share Now</button>
+                <button class="btn-default" id="shareNowBtn">Share Now</button>
             </div>
         </main>
     </div>
@@ -100,8 +102,8 @@
         setTimeout(() => {
             startVideo();
         }, 2000);
-        
-       
+
+
     }
 
     function adjustVideoProportions() {
@@ -211,6 +213,30 @@
         stats.update();
     }, false);
 
+    /******** share ********/
+    $('#shareNowBtn').click(function () {
+
+        let videoEl = document.getElementsByTagName('video')[0];
+        let canvas = document.getElementById('videoResult');
+        let ctx = canvas.getContext('2d');
+
+        var w = videoEl.videoWidth
+        var h = videoEl.videoHeight
+        canvas.width = w
+        canvas.height = h
+        ctx.fillRect(0, 0, w, h)
+        ctx.drawImage(videoEl, 0, 0, w, h)
+        videoEl.style.backgroundImage = `url(${canvas.toDataURL()})` // here is the magic
+        videoEl.style.backgroundSize = 'cover'
+        ctx.clearRect(0, 0, w, h);
+
+
+        html2canvas(document.querySelector("#selfie")).then(canvas => {
+            var base64Img = canvas.toDataURL();
+            console.log(base64Img);
+
+        });
+    });
 </script>
 
 </html>
