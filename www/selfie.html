@@ -2,6 +2,30 @@
 <html lang="en">
 
 <head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-storage.js"></script>
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBiP2bknPIgDJrvBUPtVPy5E1LFgKaWkC8",
+            authDomain: "facetrackergame.firebaseapp.com",
+            databaseURL: "https://facetrackergame.firebaseio.com",
+            projectId: "facetrackergame",
+            storageBucket: "facetrackergame.appspot.com",
+            messagingSenderId: "703709206628",
+            appId: "1:703709206628:web:17635bcd0321ee4957e771"
+        };
+        // Initialize Firebase
+        console.log('init firebase');
+        
+        firebase.initializeApp(firebaseConfig);
+    </script>
+     
+
     <meta charset="UTF-8">
     <title>Selfie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -233,10 +257,27 @@
 
         html2canvas(document.querySelector("#selfie")).then(canvas => {
             var base64Img = canvas.toDataURL();
-            console.log(base64Img);
-
+            uploadImg(base64Img)
         });
     });
+    function uploadImg(img) {
+        const name = new Date().getTime();
+        const ref = firebase.storage().ref('result/' + name + '.jpeg');
+        const uploadTask = ref.putString(img.split(',')[1], 'base64');
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, (taskSnapshot) => {
+            console.log(taskSnapshot);
+        }, err => {
+            console.log(err);
+            reject(err);
+        }, () => {
+            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                console.log(url)
+                window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips'), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
+            });
+
+        });
+    }
 </script>
 
 </html>
