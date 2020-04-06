@@ -52,7 +52,7 @@
 </head>
 
 <body>
-    <div class="loader-block" style="display: none;">
+    <div class="loader-block" id="loadingSpin" style="display: none;">
         <div class="loader"></div>
     </div>
     <div class="wrapper">
@@ -264,6 +264,7 @@
         });
     });
     function uploadImg(img) {
+        $('#loadingSpin').css("display", "");
         const name = new Date().getTime();
         const ref = firebase.storage().ref('result/' + name + '.jpeg');
         const uploadTask = ref.putString(img.split(',')[1], 'base64');
@@ -272,8 +273,10 @@
             console.log(taskSnapshot);
         }, err => {
             console.log(err);
+            $('#loadingSpin').css("display", "none");
             reject(err);
         }, () => {
+            $('#loadingSpin').css("display", "none");
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 console.log(url)
                 window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips'), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
