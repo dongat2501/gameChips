@@ -15,7 +15,7 @@ function main() {
   JEEFACETRANSFERAPI.init({
     canvasId: "canvas",
     NNCpath: "src/model/",
-    callbackReady: function(errCode) {
+    callbackReady: function (errCode) {
       if (errCode) {
         console.log(
           "ERROR - cannot init JEEFACETRANSFERAPI. errCode =",
@@ -33,6 +33,7 @@ function main() {
 function successCallback() {
   // Call next frame
   // document.getElementById("full-page-loader").style.display = "none";
+  startGame();
   nextFrame();
   // Add code after API is ready.
 }
@@ -46,8 +47,8 @@ function nextFrame() {
   let deltaTime = Date.now() - lastClosedTime;
   if (deltaTime > timeThreshold && continuous) {
     start_alarm();
-    blinkCount++;
-    document.getElementById('blink-count').innerHTML = blinkCount;
+    blinked();
+    // document.getElementById('blink-count').innerHTML = blinkCount;
     // console.log("Alarm Called");
     body.style.background = "#f00";
   } else {
@@ -77,4 +78,121 @@ function nextFrame() {
   }
   // Replay frame
   requestAnimationFrame(nextFrame);
+}
+
+
+var clockCountdown, paused = false, inprogress = false;
+var timeleft = 30, exactCount = 0;
+var centerX, centerY,audio;
+var soundRight,soundWrong,soundLose,soundWin;
+function startGame() {
+  animateDiv();
+  getCentral();
+  soundRight =  new sound('/sound/Blink-Right.mp3')
+  soundWrong =  new sound('/sound/Blink-Wrong.mp3')
+  soundLose =  new sound('/sound/Game-Lose.mp3')
+  soundWin =  new sound('/sound/Game-Win.mp3')
+  clockCountdown = setInterval(function () {
+    timeleft -= 1;
+    if (timeleft <= 0) {
+      soundLose.play();
+      window.location.pathname = '/play-again.html'
+      document.getElementById("clock").innerHTML = 0;
+      clearInterval(clockCountdown);
+    } else {
+      document.getElementById("clock").innerHTML = timeleft;
+    }
+
+
+  }, 1000);
+}
+function blinked() {
+  if (inprogress) { return };
+  blinkCount++;
+  // document.getElementById('blink-count').innerHTML = blinkCount;
+  inprogress = true;
+  setTimeout(function () { inprogress = false }, 2000);
+  $('#cookie').stop();
+  addToping('#toping' + blinkCount + '_outside', blinkCount);
+  if (blinkCount >= 4 && exactCount > 2) {
+    soundWin.play();
+    setTimeout(function () {
+      window.location.pathname = '/welldone.html'
+    }, 1000); return;
+  }
+  else if (blinkCount >= 4 && exactCount <= 2) {
+    soundLose.play();
+    setTimeout(function () {
+      window.location.pathname = '/play-again.html'
+    }, 1000); return;
+  }
+  setTimeout(function () { animateDiv() }, 1000)
+}
+function addToping(id, index) {
+  var exact = caculatePosition();
+  console.log(exact)
+  if (exact > 30) {
+    exactCount++;
+    $('#candy' + index).css("display", "none");
+    soundRight.play();
+  } else {
+    soundWrong.play();
+  }
+  $(id).animate({ left: centerX, top: centerY }, 800, function () {
+    setTimeout(function () {
+      $(id).css("display", "none");
+      $('#toping' + index).css("display", "block");
+    }, 200)
+  });
+}
+function caculatePosition() {
+  var cookieWidth = 178;
+  var cookieEl = $('#center_cookie')
+  var cookieY = cookieEl.offset().top;
+  return (cookieWidth - (Math.abs(cookieY - centerY))) / cookieWidth * 100;
+}
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function animateDiv() {
+  $('#cookie').animate({ bottom: getRandomInt(-250, 250), left: 0 }, 2000, function () {
+    animateDiv();
+  });
+
+};
+function getCentral() {
+  var centerElement = $('#center_circle');
+  var offset = centerElement.offset();
+  var width = centerElement.width();
+  centerX = offset.left
+  centerY = offset.top
+  console.log(centerX, centerY);
+}
+function playAudio(url) {
+  if(audio){
+    audio.pause();audio.currentTime = 0;
+  }
+  audio = new Audio(url);
+  audio.crossOrigin = 'anonymous';
+  audio.play().then(s=>{
+    console.log(s)
+  }).catch(err=>{
+    console.log(err)
+  });
+}
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  // this.sound.play();
+  this.play = function(){
+      this.sound.play();
+  }
+  this.stop = function(){
+      this.sound.pause();
+  }    
 }
