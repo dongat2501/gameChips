@@ -89,7 +89,7 @@ function nextFrame() {
 
 var clockCountdown, paused = false, inprogress = false;
 var timeleft = 30, exactCount = 0;
-var centerX, centerY, audio, cookieY, cookieX;
+var centerX, centerY, audio;
 var soundRight, soundWrong, soundLose, soundWin;
 function startGame() {
   animateDiv();
@@ -149,27 +149,34 @@ function blinked() {
 }
 function addToping(id, index) {
   var exact = caculatePosition();
-  console.log(exact)
-  if (exact > 30) {
+  console.log('#toping' + index)
+  if (exact < 0.5) {
+    $(id).animate({ top: 40, right: 50 }, 800, function () {
+      setTimeout(function () {
+        $(id).css("display", "none");
+      }, 100)
+    });
+    soundWrong.play();
+  } else {
     exactCount++;
     $('#candy' + index).css("display", "none");
+    $(id).animate({ top: 40, right: 50 }, 800, function () {
+      setTimeout(function () {
+        $(id).css("display", "none");
+        $('#toping' + index).css("display", "block");
+      }, 200)
+    });
     soundRight.play();
-  } else {
-    soundWrong.play();
   }
-  $(id).animate({ top: 40, right: 50 }, 800, function () {
-    setTimeout(function () {
-      $(id).css("display", "none");
-      $('#toping' + index).css("display", "block");
-    }, 200)
-  });
+
 }
 function caculatePosition() {
   var cookieWidth = 178;
   var cookieEl = $('#center_cookie')
-  cookieY = cookieEl.offset().top;
-  cookieX = cookieEl.offset().left;
-  return (cookieWidth - (Math.abs(cookieY - centerY))) / cookieWidth * 100;
+  var cookieY = cookieEl.offset().top;
+  var cookieX = cookieEl.offset().left;
+  // console.log() 
+  return (cookieWidth - Math.abs(cookieY - centerY)) / cookieWidth
 }
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
