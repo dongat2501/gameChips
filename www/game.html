@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="css/font/font.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"></script>
     <script src="./js/jquery.js"></script>
+    <style>
+        .topping-outside {
+            width: 60px;
+            position: absolute;
+            top: -200px;
+    right: -200px;
+        }
+    </style>
 </head>
 
 <body onload="main()">
@@ -70,18 +78,15 @@
                         <div class="block-center__inner">
                             <div class="absolute-center" id="center_circle"></div>
                             <div class="full-absolute">
-                                <img class="topping topping-green .topping-outside" id="toping1_outside"
-                                    src="img/green.png" />
-                                <img class="topping topping-red .topping-outside" id="toping2_outside"
-                                    src="img/red.png" />
-                                <img class="topping topping-blue .topping-outside" id="toping3_outside"
-                                    src="img/blue.png" />
-                                <img class="topping topping-orange .topping-outside" id="toping4_outside"
-                                    src="img/orange.png" />
-                                <img class="topping topping-orange .topping-outside" id="toping5_outside"
-                                    src="img/orange.png" />
+
                             </div>
                             <div class="absolute-img" id="cookie">
+                                <img class="topping-outside" id="toping1_outside" src="img/green.png" />
+                                <img class="topping-outside" id="toping2_outside" src="img/red.png" />
+                                <img class="topping-outside" id="toping3_outside" src="img/blue.png" />
+                                <img class="topping-outside" id="toping4_outside" src="img/orange.png" />
+                                <img class="topping-outside" id="toping5_outside" src="img/orange.png" />
+
                                 <div class="absolute-center" id="center_cookie"></div>
                                 <img style="width: 100%;" src="img/coockie-empty.png" />
                                 <img class="topping topping-blue" style="display:none" id="toping3"

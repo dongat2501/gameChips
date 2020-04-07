@@ -157,7 +157,7 @@ function addToping(id, index) {
   } else {
     soundWrong.play();
   }
-  $(id).animate({ left: cookieX, top: cookieY }, 800, function () {
+  $(id).animate({ top: 40, right: 50 }, 800, function () {
     setTimeout(function () {
       $(id).css("display", "none");
       $('#toping' + index).css("display", "block");

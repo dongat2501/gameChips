@@ -5,7 +5,7 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-storage.js"></script>
-      <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
@@ -21,10 +21,10 @@
         };
         // Initialize Firebase
         console.log('init firebase');
-        
+
         firebase.initializeApp(firebaseConfig);
     </script>
-     
+
 
     <meta charset="UTF-8">
     <title>Selfie</title>
@@ -92,6 +92,7 @@
                     <div class="face-block__img">
                         <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
                         </video>
+                        <img src="" id="imgCanvas">
                         <canvas id="videoResult"></canvas>
                     </div>
                     <div id="container">
@@ -253,8 +254,8 @@
         canvas.height = h
         ctx.fillRect(0, 0, w, h)
         ctx.drawImage(videoEl, 0, 0, w, h)
-        videoEl.style.backgroundImage = `url(${canvas.toDataURL()})` // here is the magic
-        videoEl.style.backgroundSize = 'cover'
+        videoEl.style.display = 'none';
+        $('#imgCanvas').attr('src', canvas.toDataURL());
         ctx.clearRect(0, 0, w, h);
 
 
