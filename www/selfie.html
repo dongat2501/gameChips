@@ -279,8 +279,9 @@
         }, () => {
             $('#loadingSpin').css("display", "none");
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                console.log(url)
-                window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips'), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
+                let shareUrl = 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips');
+                window.location.href = shareUrl;
+                // window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips'), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
             });
 
         });
