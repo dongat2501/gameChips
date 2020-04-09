@@ -247,6 +247,7 @@
 
     /******** share ********/
     $('#capture').click(function () {
+        $('#loadingSpin').css("display", "");
         ctrack.stop();
         let videoEl = document.getElementsByTagName('video')[0];
         let canvas = document.getElementById('videoResult');
@@ -261,8 +262,6 @@
         videoEl.style.display = 'none';
         $('#imgCanvas').attr('src', canvas.toDataURL());
         ctx.clearRect(0, 0, w, h);
-
-
         html2canvas(document.querySelector("#selfie")).then(canvas => {
             var base64Img = canvas.toDataURL();
             uploadImg(base64Img)
@@ -270,7 +269,7 @@
 
     });
     function uploadImg(img, callback) {
-        $('#loadingSpin').css("display", "");
+       
         const name = new Date().getTime();
         const ref = firebase.storage().ref('result/' + name + '.jpeg');
         const uploadTask = ref.putString(img.split(',')[1], 'base64');
