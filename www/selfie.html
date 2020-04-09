@@ -112,7 +112,7 @@
                 </div>
             </section>
             <div class="btn-group mt--25">
-                <button class="btn-default" id="capture">Capture</button>
+                <button class="btn-default"><a href="https://instagram.com/a/r/?effect_id=2388814678027564&ch=ZTYyZDllZjYwNGNlOTRiNzFlZjdhZTFlODllZmY1ZjI%3D">Capture</a></button>
                 <button class="btn-default" style="display: none;" id="shareToDevice" onClick="share()">Share
                     File</button>
             </div>
@@ -215,7 +215,7 @@
 
         var er = ec.meanPredict(cp);
         if (er) {
-            
+
             ctrack.stop(); // comment line if want to check smile
             // console.log(er[3].value);
             if (er[3].value > 0.75) {
@@ -269,7 +269,7 @@
 
     });
     function uploadImg(img, callback) {
-       
+
         const name = new Date().getTime();
         const ref = firebase.storage().ref('result/' + name + '.jpeg');
         const uploadTask = ref.putString(img.split(',')[1], 'base64');
@@ -285,8 +285,8 @@
             console.log(uploadTask.snapshot.ref)
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 urlImageUploaded = url;
-                $('#shareToDevice').css('display','block');
-                $('#capture').css('display','none')
+                $('#shareToDevice').css('display', 'block');
+                $('#capture').css('display', 'none')
                 // if (navigator.share) {
                 //     $('#shareToDevice').click();
                 // } else {
