@@ -1,0 +1,35 @@
+<html>
+<title>
+    Web Share API
+</title>
+
+<body>
+    <div>
+        <input type="text" placeholder="Enter text you wanna share" id="title" />
+        <input type="text" placeholder="Enter the text you want to share here" id="text" />
+        <input type="text" placeholder="Enter the URL" id="url" />
+        <input type="file" id="file" />
+        <button onclick="shareFiles()">Share</button>
+    </div>
+</body>
+<script>
+    function shareFiles() {
+        const files =file.files
+        console.log(files)
+        if (navigator.canShare && navigator.canShare({
+            files: files
+        })) {
+            navigator.share({
+                title: title.value,
+                text: text.value,
+                file: files,
+            })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        } else {
+            console.log("Web Share API is not supported in your browser.")
+        }
+    }
+</script>
+
+</html>

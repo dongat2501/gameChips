@@ -112,7 +112,9 @@
                 </div>
             </section>
             <div class="btn-group mt--25">
-                <button class="btn-default" id="shareNowBtn">Share Now</button>
+                <button class="btn-default" id="capture">Capture</button>
+                <button class="btn-default" style="display: none;" id="shareToDevice" onClick="share()">Share
+                    File</button>
             </div>
         </main>
     </div>
@@ -123,7 +125,7 @@
     var vid_height = vid.height;
     var overlay = document.getElementById('overlay');
     var overlayCC = overlay.getContext('2d');
-
+    var urlImageUploaded;
     /********** check and set up video/webcam **********/
 
     function enablestart() {
@@ -213,6 +215,8 @@
 
         var er = ec.meanPredict(cp);
         if (er) {
+            
+            ctrack.stop(); // comment line if want to check smile
             // console.log(er[3].value);
             if (er[3].value > 0.75) {
                 vid.pause();
@@ -242,8 +246,8 @@
     }, false);
 
     /******** share ********/
-    $('#shareNowBtn').click(function () {
-
+    $('#capture').click(function () {
+        ctrack.stop();
         let videoEl = document.getElementsByTagName('video')[0];
         let canvas = document.getElementById('videoResult');
         let ctx = canvas.getContext('2d');
@@ -263,8 +267,9 @@
             var base64Img = canvas.toDataURL();
             uploadImg(base64Img)
         });
+
     });
-    function uploadImg(img) {
+    function uploadImg(img, callback) {
         $('#loadingSpin').css("display", "");
         const name = new Date().getTime();
         const ref = firebase.storage().ref('result/' + name + '.jpeg');
@@ -278,13 +283,37 @@
             reject(err);
         }, () => {
             $('#loadingSpin').css("display", "none");
+            console.log(uploadTask.snapshot.ref)
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                let shareUrl = 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips');
-                window.location.href = shareUrl;
-                // window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips'), 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
+                urlImageUploaded = url;
+                $('#shareToDevice').css('display','block');
+                $('#capture').css('display','none')
+                // if (navigator.share) {
+                //     $('#shareToDevice').click();
+                // } else {
+                //     let shareUrl = 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('gameChips');
+                //     window.location.href = shareUrl;
+                // }
             });
 
         });
+    }
+    $('shareToDevice').click(function () {
+        share();
+    })
+    function share() {
+        if (navigator.share) {
+            navigator.share({
+                title: '',
+                text: '',
+                url: urlImageUploaded,
+            })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        } else {
+            let shareUrl = 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(urlImageUploaded) + '&t=' + encodeURIComponent('gameChips');
+            window.location.href = shareUrl;
+        }
     }
 </script>
 

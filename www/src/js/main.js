@@ -127,43 +127,44 @@ function startGame() {
 }
 function blinked() {
   if (inprogress) { return };
-  blinkCount++;
+  // blinkCount++;
   // document.getElementById('blink-count').innerHTML = blinkCount;
   inprogress = true;
+  addToping();
   setTimeout(function () { inprogress = false }, 2000);
   $('#cookie').stop();
-  addToping('#toping' + blinkCount + '_outside', blinkCount);
-  if (blinkCount >= 5 && exactCount > 4) {
+  if (exactCount > 4) {
     soundWin.play();
     setTimeout(function () {
       window.location.pathname = '/welldone.html'
     }, 1000); return;
   }
-  else if (blinkCount >= 5 && exactCount <= 4) {
-    soundLose.play();
-    setTimeout(function () {
-      window.location.pathname = '/play-again.html'
-    }, 1000); return;
-  }
+  // else if (blinkCount >= 5 && exactCount <= 4) {
+  //   soundLose.play();
+  //   setTimeout(function () {
+  //     window.location.pathname = '/play-again.html'
+  //   }, 1000); return;
+  // }
   setTimeout(function () { animateDiv() }, 1000)
 }
-function addToping(id, index) {
+function addToping() {
   var exact = caculatePosition();
-  console.log('#toping' + index)
+  // console.log('#toping' + index)
   if (exact < 0.5) {
-    $(id).animate({ top: 40, right: 50 }, 800, function () {
-      setTimeout(function () {
-        $(id).css("display", "none");
-      }, 100)
-    });
+    // $(id).animate({ top: 40, right: 50 }, 800, function () {
+    //   setTimeout(function () {
+    //     $(id).css("display", "none");
+    //   }, 100)
+    // });
     soundWrong.play();
   } else {
     exactCount++;
-    $('#candy' + index).css("display", "none");
-    $(id).animate({ top: 40, right: 50 }, 800, function () {
+    $('#candy' + exactCount).css("display", "none");
+    var idOutside = '#toping' + exactCount + '_outside'
+    $(idOutside).animate({ top: 40, right: 50 }, 800, function () {
       setTimeout(function () {
-        $(id).css("display", "none");
-        $('#toping' + index).css("display", "block");
+        $(idOutside).css("display", "none");
+        $('#toping' + exactCount).css("display", "block");
       }, 200)
     });
     soundRight.play();
