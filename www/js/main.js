@@ -8,4 +8,7 @@ $(document).ready(function () {
     $('#btn-back').click(function (e) {
         window.history.back();
     })
+    $('#btn-home').click(function (e) {
+        window.location.pathname = 'index.html'
+    })
 });
