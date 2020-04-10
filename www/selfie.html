@@ -6,7 +6,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-storage.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+      https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
         // Your web app's Firebase configuration
@@ -25,7 +25,6 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 
-
     <meta charset="UTF-8">
     <title>Selfie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,12 +36,7 @@
     <link rel="stylesheet" href="css/font/font.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/libs/utils.js"></script>
-    <script src="./js/clmtrackr.js"></script>
-    <script src="./js/models/model_pca_20_svm.js"></script>
-    <script src="./js/libs/Stats.js"></script>
-    <script src="./js/emotion_classifier.js"></script>
-    <script src="./js/emotionmodel.js"></script>
+    <script src="./js/FileSaver.min.js"></script>
     <script src="./js/html2canvas.min.js"></script>
     <style>
         #overlay {
@@ -59,7 +53,7 @@
         <header class="header">
             <div class="flex-between flex-align-center header__container">
                 <div class="header__left">
-                    <button class="btn-transparent header__btn">
+                    <button class="btn-transparent header__btn" id="btn-back">
                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -112,8 +106,12 @@
                 </div>
             </section>
             <div class="btn-group mt--25">
-                <button class="btn-default"><a href="https://instagram.com/a/r/?effect_id=2388814678027564&ch=ZTYyZDllZjYwNGNlOTRiNzFlZjdhZTFlODllZmY1ZjI%3D">Capture</a></button>
-                <button class="btn-default" style="display: none;" id="shareToDevice" onClick="share()">Share
+
+                <button class="btn-default" id="capture">Capture</button>
+                <button class="btn-default" style="display: none;float: left;" id="shareToDevice"
+                    onClick="share()">Share
+                    File</button>
+                <button class="btn-default" style="display: none;" id="downloadBtn" onClick="download()">Download
                     File</button>
             </div>
         </main>
@@ -126,15 +124,8 @@
     var overlay = document.getElementById('overlay');
     var overlayCC = overlay.getContext('2d');
     var urlImageUploaded;
+    var resultBase64;
     /********** check and set up video/webcam **********/
-
-    function enablestart() {
-        setTimeout(() => {
-            startVideo();
-        }, 2000);
-
-
-    }
 
     function adjustVideoProportions() {
         // resize overlay and video if proportions are different
@@ -156,14 +147,6 @@
             adjustVideoProportions();
             vid.play();
         }
-        vid.onresize = function () {
-            adjustVideoProportions();
-            if (trackingStarted) {
-                ctrack.stop();
-                ctrack.reset();
-                ctrack.start(vid);
-            }
-        }
     }
 
     function gumFail() {
@@ -181,65 +164,6 @@
     } else {
         alert("This demo depends on getUserMedia, which your browser does not seem to support. :(");
     }
-
-    vid.addEventListener('canplay', enablestart, false);
-
-    /*********** setup of emotion detection *************/
-
-    // set eigenvector 9 and 11 to not be regularized. This is to better detect motion of the eyebrows
-    pModel.shapeModel.nonRegularizedVectors.push(9);
-    pModel.shapeModel.nonRegularizedVectors.push(11);
-
-    var ctrack = new clm.tracker({ useWebGL: true });
-    ctrack.init(pModel);
-    var trackingStarted = false;
-
-    function startVideo() {
-        // start video
-        vid.play();
-        // start tracking
-        ctrack.start(vid);
-        trackingStarted = true;
-        // start loop to draw face
-        drawLoop();
-    }
-
-    function drawLoop() {
-        requestAnimFrame(drawLoop);
-        overlayCC.clearRect(0, 0, vid_width, vid_height);
-        //psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
-        if (ctrack.getCurrentPosition()) {
-            ctrack.draw(overlay);
-        }
-        var cp = ctrack.getCurrentParameters();
-
-        var er = ec.meanPredict(cp);
-        if (er) {
-
-            ctrack.stop(); // comment line if want to check smile
-            // console.log(er[3].value);
-            if (er[3].value > 0.75) {
-                vid.pause();
-                ctrack.stop();
-            }
-        }
-    }
-
-    delete emotionModel['disgusted'];
-    delete emotionModel['fear'];
-    var ec = new emotionClassifier();
-    ec.init(emotionModel);
-    var emotionData = ec.getBlank();
-
-
-
-    /******** stats ********/
-
-    stats = new Stats();
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.top = '0px';
-    document.getElementById('container').appendChild(stats.domElement);
-
     // update stats on every iteration
     document.addEventListener('clmtrackrIteration', function (event) {
         stats.update();
@@ -248,7 +172,6 @@
     /******** share ********/
     $('#capture').click(function () {
         $('#loadingSpin').css("display", "");
-        ctrack.stop();
         let videoEl = document.getElementsByTagName('video')[0];
         let canvas = document.getElementById('videoResult');
         let ctx = canvas.getContext('2d');
@@ -263,6 +186,7 @@
         $('#imgCanvas').attr('src', canvas.toDataURL());
         ctx.clearRect(0, 0, w, h);
         html2canvas(document.querySelector("#selfie")).then(canvas => {
+            resultBase64 = canvas;
             var base64Img = canvas.toDataURL();
             uploadImg(base64Img)
         });
@@ -286,6 +210,7 @@
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 urlImageUploaded = url;
                 $('#shareToDevice').css('display', 'block');
+                $('#downloadBtn').css('display', 'block');
                 $('#capture').css('display', 'none')
                 // if (navigator.share) {
                 //     $('#shareToDevice').click();
@@ -313,6 +238,11 @@
             let shareUrl = 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(urlImageUploaded) + '&t=' + encodeURIComponent('gameChips');
             window.location.href = shareUrl;
         }
+    }
+    function download() {
+        resultBase64.toBlob((blob) => {
+            saveAs(blob, 'success-gamechip.png');
+        });
     }
 </script>
 
