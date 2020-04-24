@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     })
     $('#btn-back').click(function (e) {
+        console.log('back')
         history.go(-1); return false;
     })
     $('#btn-home').click(function (e) {
