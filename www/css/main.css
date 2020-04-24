@@ -114,7 +114,8 @@ input, button, select {
 
 .main {
   width: 100vw;
-  height: auto;
+  max-height: 100vh;
+  overflow-y: auto;
   position: fixed;
   top: 0;
   left: 0;
