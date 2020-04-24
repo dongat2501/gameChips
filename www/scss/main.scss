@@ -602,11 +602,18 @@ input, button, select {
 }
 
 .face-block__bottom {
-    position: absolute;
     width: 100%;
-    padding: 10px 20px 10px 0;
-    left: 0;
-    bottom: 0;
+    padding: 10px 5px 40px;
+    color: #fff;
+    text-align: center;
+    i {
+        margin-right: 5px;
+        font-size: 20px;
+    }
+    span {
+        font-weight: 400;
+        display: block;
+    }
 }
 
 .large {

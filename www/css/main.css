@@ -475,11 +475,16 @@ input, button, select {
   line-height: calc(20/24); }
 
 .face-block__bottom {
-  position: absolute;
   width: 100%;
-  padding: 10px 20px 10px 0;
-  left: 0;
-  bottom: 0; }
+  padding: 10px 5px 40px;
+  color: #fff;
+  text-align: center; }
+  .face-block__bottom i {
+    margin-right: 5px;
+    font-size: 20px; }
+  .face-block__bottom span {
+    font-weight: 400;
+    display: block; }
 
 .large {
   font-size: 23px;
