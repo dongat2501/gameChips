@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     })
     $('#btn-back').click(function (e) {
-        window.history.back();
+        history.go(-1); return false;
     })
     $('#btn-home').click(function (e) {
         window.location.pathname = 'index.html'

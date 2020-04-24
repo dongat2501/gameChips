@@ -10,7 +10,7 @@
         rel="stylesheet"> -->
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="stylesheet" href="css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/font/font.css" >
+    <link rel="stylesheet" href="css/font/font.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/main.js"></script>
 </head>
@@ -45,15 +45,28 @@
             </section>
             <p class="deep-yellow mb-10 center-text"><span class="play-again-icon">:(</span></p>
             <div class="try-again center-text mb-90">
-                <p class="deep-yellow font-large-title mb-10">Awe No!</p>
-                <p class="white-text ">You can do better than that</p>
+                <p class="deep-yellow font-large-title mb-10" id="title-large">Awe No!</p>
+                <p class="white-text " id="title-normal">You can do better than that</p>
             </div>
-            
+
             <div class="btn-group">
-                    <button class="btn-default btn-router btn-router" url="game.html">Play Again</button>
+                <button class="btn-default btn-router btn-router" url="game.html">Play Again</button>
             </div>
         </main>
     </div>
 </body>
+<script>
+
+    var contents = [
+        { "large": "Awe No!", "normal": "You can do better than that." },
+        { "large": "You can do it!", "normal": "Why don’t you try again." },
+        { "large": "WOW, power blinker.", "normal": " Almost there, let’s try again." }
+
+    ]
+    let showContent = contents[Math.floor(Math.random() * 3)];
+    document.getElementById('title-large').innerHTML = showContent.large;
+    document.getElementById('title-normal').innerHTML = showContent.normal;
+
+</script>
 
 </html>
