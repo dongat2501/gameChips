@@ -99,7 +99,7 @@ input, button, select {
   position: fixed;
   top: 0;
   left: 0;
-  background: transparent;
+  background: #317eba;
   z-index: 9; }
   .header__center {
     padding: 10px; }
@@ -109,6 +109,16 @@ input, button, select {
     font-size: 24px; }
   .header__title {
     color: #fff; }
+  .header__right .btn-transparent.header__btn {
+    opacity: 0; }
+
+.main {
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10; }
 
 .logo {
   position: relative;
@@ -119,6 +129,9 @@ input, button, select {
   .logo.logo--two-up .logo__img {
     margin-left: -60px;
     max-width: 275px; }
+    .logo.logo--two-up .logo__img img {
+      width: 100%;
+      margin: 0; }
   .logo.logo--two-up.logo--game .logo__img {
     margin-left: -40px;
     max-width: 60vw; }
@@ -156,7 +169,8 @@ input, button, select {
     max-width: calc(100vw - 40px);
     position: relative; }
     .logo__img img {
-      width: 100%;
+      width: calc(100% + 60px);
+      margin-left: -30px;
       height: 100%;
       -o-object-fit: cover;
          object-fit: cover; }
@@ -165,7 +179,7 @@ input, button, select {
         height: 36px;
         -o-object-fit: contain;
            object-fit: contain;
-        left: calc(50% - 70px);
+        left: calc(50% - 40px);
         bottom: 25px; }
   .logo__container {
     position: relative; }
@@ -177,6 +191,7 @@ input, button, select {
   margin-right: 5px; }
 
 .mb-10 {
+  display: block;
   margin-bottom: 10px; }
 
 .mb-90 {
@@ -244,13 +259,18 @@ input, button, select {
   text-align: center; }
 
 .list-number {
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
   .list-number.list--two-up .list-number__item {
     display: -webkit-box;
     display: flex; }
   .list-number.list--two-up .list-content {
     margin-top: 7px;
     text-align: center; }
+  .list-number.list-number--rules .list-number__list {
+    padding: 0 10px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    word-break: break-word; }
   .list-number .list-order {
     margin-right: 5px;
     font-size: 14px;
@@ -270,19 +290,27 @@ input, button, select {
 .bg-dark-custom {
   max-width: 315px;
   margin: 0 auto;
-  padding: 15px 10px 35px;
+  padding: 15px 10px;
   border-radius: 31px;
-  background: #1BA3FC;
+  background: #1e588c;
   text-align: center;
   text-transform: uppercase; }
 
+.block-countdown {
+  margin-right: -5px;
+  color: #111;
+  font-size: 22px;
+  padding: 10px 15px 10px 20px;
+  background: #317eba;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px; }
+
 .face-block {
-  margin-top: -40px;
+  margin-top: -80px;
   margin-bottom: 20px; }
   .face-block.face-block--selfie {
     margin-bottom: 0;
     padding-top: 20px;
-    min-height: calc(100vw + 100px);
     background: #0E6AA1; }
   .face-block__container {
     position: relative; }
@@ -332,6 +360,10 @@ input, button, select {
   font-size: 14px;
   font-weight: 400;
   line-height: calc(20/14); }
+
+.bold {
+  font-weight: 700;
+  text-transform: uppercase; }
 
 .large-p {
   font-size: 16px; }
