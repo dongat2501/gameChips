@@ -15,7 +15,7 @@ function main() {
   JEEFACETRANSFERAPI.init({
     canvasId: "canvas",
     NNCpath: "./js/model/",
-    callbackReady: function(errCode) {
+    callbackReady: function (errCode) {
       if (errCode) {
         console.log(
           "ERROR - cannot init JEEFACETRANSFERAPI. errCode =",

@@ -76,7 +76,7 @@
                 </div>
             </section>
             <section class="mt-0 face-block face-block--selfie" id="selfie">
-                <div class="face-block__container">
+                <div class="face-block__container" id="preCapture">
                     <!-- <div class="face-block__top">
                         <p class="flex-between">
                             <span class="large white-text">I did it! </span>
@@ -84,7 +84,7 @@
                         </p>
                     </div> -->
                     <div class="face-block__frame">
-                        
+
                     </div>
                     <div class="face-block__img">
                         <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
@@ -96,20 +96,16 @@
 
                         <canvas id="overlay" width="400" height="300"></canvas>
                     </div>
-                    <!-- <div id="controls">
-                        <input class="btn" type="button" value="wait, loading video" disabled="disabled"
-                            onclick="startVideo()" id="startbutton"></input>
-                    </div> -->
-                    
                 </div>
                 <div class="face-block__bottom">
-                        <div class="flex-center">
-                            <span>
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                Save this image and Share it on Instagram</span>
-                        </div>
+                    <div class="flex-center">
+                        <span>
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            Save this image and Share it on Instagram</span>
                     </div>
+                </div>
             </section>
+            <img id="captureResult" src="" style="display: none;width: 100%;">
             <div class="btn-group mt--25">
 
                 <button class="btn-default" id="capture">Capture</button>
@@ -176,7 +172,7 @@
 
     /******** share ********/
     $('#capture').click(function () {
-        $('#loadingSpin').css("display", "");
+        // $('#loadingSpin').css("display", "");
         let videoEl = document.getElementsByTagName('video')[0];
         let canvas = document.getElementById('videoResult');
         let ctx = canvas.getContext('2d');
@@ -193,7 +189,10 @@
         html2canvas(document.querySelector("#selfie")).then(canvas => {
             resultBase64 = canvas;
             var base64Img = canvas.toDataURL();
-            uploadImg(base64Img)
+            $('#captureResult').attr('src', base64Img);
+            $('#captureResult').css('display', 'block')
+            $('#preCapture').css('display', 'none')
+            // uploadImg(base64Img)
         });
 
     });
