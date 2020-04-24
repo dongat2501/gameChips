@@ -100,7 +100,7 @@ input, button, select {
   top: 0;
   left: 0;
   z-index: 9; }
-  .header.header--game {
+  .header.header--game, .header.header-primary {
     background: #317eba; }
   .header__center {
     padding: 10px; }
@@ -312,6 +312,14 @@ input, button, select {
     background: #0E6AA1; }
   .face-block__container {
     position: relative; }
+  .face-block__frame {
+    background-image: url("../img/photoframe.png");
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 20px);
+    -o-object-fit: contain;
+       object-fit: contain;
+    top: -20px; }
   .face-block .block-center {
     width: 194px;
     height: 194px;

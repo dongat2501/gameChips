@@ -133,7 +133,7 @@ input, button, select {
     top: 0;
     left: 0;
     z-index: 9;
-    &.header--game {
+    &.header--game, &.header-primary {
         background: #317eba;
     }
     &__center {
@@ -408,6 +408,14 @@ input, button, select {
     }
     &__container {
         position: relative;
+    }
+    &__frame {
+        background-image: url('../img/photoframe.png');
+        position: absolute;
+        width: 100%;
+        height: calc(100% + 20px);
+        object-fit: contain;
+        top: -20px;
     }
     .block-center {
         width: 194px;
