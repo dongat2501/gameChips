@@ -132,8 +132,10 @@ input, button, select {
     position: fixed;
     top: 0;
     left: 0;
-    background: #317eba;
     z-index: 9;
+    &.header--game {
+        background: #317eba;
+    }
     &__center {
         padding: 10px;
     }
@@ -153,13 +155,17 @@ input, button, select {
 }
 
 .main {
-    width: 100vw;
-    max-height: 100vh;
-    overflow-y: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
+    // width: 100vw;
+    // max-height: 100vh;
+    // overflow-y: auto;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 10;
+    &.main--game {
+        position: relative;
+        z-index: 10;
+    }
 }
 
 .logo {
@@ -382,6 +388,7 @@ input, button, select {
 }
 
 .block-countdown {
+    min-width: 65px;
     margin-right: -5px;
     color: #111;
     font-size: 22px;
@@ -392,7 +399,7 @@ input, button, select {
 }
 
 .face-block {
-    margin-top: -80px;
+    margin-top: -95px;
     margin-bottom: 20px;
     &.face-block--selfie {
         margin-bottom: 0;
