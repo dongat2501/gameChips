@@ -115,7 +115,10 @@ input, button, select {
 
 .main.main--game {
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  pointer-events: none; }
+  .main.main--game button {
+    pointer-events: visible; }
 
 .logo {
   position: relative;
