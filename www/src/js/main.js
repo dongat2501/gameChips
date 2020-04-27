@@ -95,7 +95,7 @@ var soundRight, soundWrong, soundLose, soundWin;
 function startGame() {
   animateDiv();
   getCentral();
-  $('#clock-spinner').addClass('pie spinner')
+  $('#clock-spinner').addClass('wrapper-clock-custom')
   // var soundCustom = new Howl({
   //   src: ['/sound/Blink-Right.mp3']
   // });
