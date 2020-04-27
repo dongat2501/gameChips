@@ -97,18 +97,27 @@
                         <canvas id="overlay" width="400" height="300"></canvas>
                     </div>
                 </div>
-                <div class="face-block__bottom">
+                <!-- <div class="face-block__bottom">
                     <div class="flex-center">
                         <span>
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                             Save this image and Share it on Instagram</span>
                     </div>
-                </div>
+                </div> -->
             </section>
             <img id="captureResult" src="" style="display: none;width: 100%;">
+            <div class="face-block__bottom" id="playAgainText" style="display: none">
+                <div class="flex-center">
+                    <span>
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        Save this image and Share it on Instagram</span>
+                </div>
+            </div>
             <div class="btn-group mt--25">
 
                 <button class="btn-default" id="capture">Capture</button>
+                <button class="btn-default btn-router" url="game.html" id="playAgain" style="display: none">Play
+                    Again</button>
                 <button class="btn-default" style="display: none;float: left;" id="shareToDevice"
                     onClick="share()">Share
                     File</button>
@@ -190,8 +199,11 @@
             resultBase64 = canvas;
             var base64Img = canvas.toDataURL();
             $('#captureResult').attr('src', base64Img);
-            $('#captureResult').css('display', 'block')
+            $('#captureResult').css('display', 'block');
+            $('#playAgainText').css('display', 'block')
+            $('#playAgain').css('display', 'block')
             $('#preCapture').css('display', 'none')
+            $('#capture').css('display', 'none')
             // uploadImg(base64Img)
         });
 
