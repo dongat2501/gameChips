@@ -10,15 +10,11 @@ ul, li {
   list-style: none; }
 
 body {
-  font-size: 15px; }
+  font-size: 15px;
+  background-color: #317eba; }
 
 .wrapper {
-  min-width: 100vw;
-  min-height: 100vh;
-  background-image: url("../img/bg.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat; }
+  min-width: 100vw; }
 
 input, button, select {
   font-size: 15px; }
@@ -130,7 +126,7 @@ input, button, select {
     overflow: hidden; }
   .logo.logo--two-up .logo__img {
     margin-left: -60px;
-    max-width: 225px; }
+    max-width: 235px; }
     .logo.logo--two-up .logo__img img {
       width: 100%;
       margin: 0; }
@@ -145,7 +141,7 @@ input, button, select {
               transform: none; }
   .logo__heading {
     max-width: 155px;
-    font-size: 28px;
+    font-size: 26px;
     line-height: calc(28/25);
     font-weight: 400;
     color: #fff;
@@ -262,12 +258,14 @@ input, button, select {
 
 .list-number {
   margin-bottom: 10px; }
-  .list-number.list--two-up .list-number__item {
-    display: -webkit-box;
-    display: flex; }
-  .list-number.list--two-up .list-content {
-    margin-top: 0px;
-    text-align: center; }
+  .list-number.list--two-up {
+    margin-top: 10px; }
+    .list-number.list--two-up .list-number__item {
+      display: -webkit-box;
+      display: flex; }
+    .list-number.list--two-up .list-content {
+      margin-top: 0px;
+      text-align: center; }
   .list-number.list-number--rules .list-number__list {
     padding: 0 10px;
     color: #fff;
@@ -404,6 +402,9 @@ input, button, select {
 
 .pb-10 {
   padding-bottom: 10px; }
+
+.pb-0 {
+  padding-bottom: 0 !important; }
 
 .camera-block {
   padding: 90px 20px 40px;
