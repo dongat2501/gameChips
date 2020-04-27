@@ -312,7 +312,6 @@ input, button, select {
   margin-bottom: 20px; }
   .face-block.face-block--selfie {
     margin-bottom: 0;
-    padding-top: 10px;
     background: #0E6AA1; }
   .face-block__container {
     position: relative; }
@@ -323,7 +322,7 @@ input, button, select {
     height: 100%;
     -o-object-fit: contain;
     object-fit: contain;
-    top: -20px;
+    top: 0px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; }
