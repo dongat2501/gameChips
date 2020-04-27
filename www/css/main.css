@@ -11,7 +11,7 @@ ul, li {
 
 body {
   font-size: 15px;
-  background-color: #317eba; }
+  background-color: #317eba !important; }
 
 .wrapper {
   min-width: 100vw; }
@@ -298,6 +298,7 @@ input, button, select {
 
 .block-countdown {
   min-width: 58px;
+  height: 37px;
   margin-right: -10px;
   color: #111;
   font-size: 22px;
@@ -575,8 +576,8 @@ input, button, select {
   border-radius: 100% 0 0 100% / 50% 0 0 50%;
   z-index: 200;
   border-right: none;
-  -webkit-animation: rota 32s linear infinite;
-          animation: rota 32s linear infinite; }
+  -webkit-animation: rota 32s linear forwards;
+          animation: rota 32s linear forwards; }
 
 .wrapper-clock:hover .spinner,
 .wrapper-clock:hover .filler,
@@ -589,7 +590,7 @@ input, button, select {
   left: 50%;
   opacity: 0;
   z-index: 100;
-  animation: opa 32s steps(1, end) infinite reverse;
+  animation: opa 32s steps(1, end) forwards reverse;
   border-left: none; }
 
 .wrapper-clock .mask {
@@ -601,8 +602,8 @@ input, button, select {
   z-index: 300;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
-  -webkit-animation: opa 32s steps(1, end) infinite;
-          animation: opa 32s steps(1, end) infinite; }
+  -webkit-animation: opa 32s steps(1, end) forwards;
+          animation: opa 32s steps(1, end) forwards; }
 
 @-webkit-keyframes rota {
   0% {

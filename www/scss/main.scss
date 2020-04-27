@@ -16,7 +16,7 @@ ul, li {
 
 body {
     font-size: 15px;
-    background-color: #317eba;
+    background-color: #317eba !important;
 }
 
 .wrapper {
@@ -393,6 +393,7 @@ input, button, select {
 
 .block-countdown {
     min-width: 58px;
+    height: 37px;
     margin-right: -10px;
     color: #111;
     font-size: 22px;
@@ -720,7 +721,7 @@ input, button, select {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     z-index: 200;
     border-right: none;
-    animation: rota 32s linear infinite;
+    animation: rota 32s linear forwards;
   }
   
   .wrapper-clock:hover .spinner,
@@ -731,10 +732,11 @@ input, button, select {
   
   .wrapper-clock .filler {
     border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    // border-radius: 100% 0 0 100% / 50% 0 0 50%;
     left: 50%;
     opacity: 0;
     z-index: 100;
-    animation: opa 32s steps(1, end) infinite reverse;
+    animation: opa 32s steps(1, end) forwards reverse;
     border-left: none;
   }
   
@@ -747,7 +749,7 @@ input, button, select {
     z-index: 300;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
-    animation: opa 32s steps(1, end) infinite;
+    animation: opa 32s steps(1, end) forwards;
   }
   
   @keyframes rota {
@@ -766,6 +768,8 @@ input, button, select {
       opacity: 0;
     }
   }
+
+
   
   .camera-block {
       h3.deep-yellow.sub-title {
