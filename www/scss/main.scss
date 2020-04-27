@@ -78,8 +78,10 @@ input, button, select {
 }
 
 .btn-default {
-    min-width: 162px;
-    height: 50px;
+    min-width: 150px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 45px;
     border-radius: 30px;
     background: #0E6AA1;
     border: 3px solid #1BA4FC;
@@ -183,7 +185,7 @@ input, button, select {
         }
         .logo__img {
             margin-left: -60px;
-            max-width: 275px;
+            max-width: 225px;
             img {
                 width: 100%;
                 margin: 0;
@@ -192,11 +194,11 @@ input, button, select {
         &.logo--game {
             .logo__img {
                 margin-left: -40px;
-                max-width: 60vw;
+                max-width: 55vw;
             }
         }
         &.logo--selfie {
-            padding-top: 70px;
+            padding-top: 45px;
             .logo__heading {
                 position: static;
                 transform: none;
@@ -205,8 +207,8 @@ input, button, select {
     }
     &__heading {
         max-width: 155px;
-        font-size: 30px;
-        line-height: calc(28/30);
+        font-size: 28px;
+        line-height: calc(28/25);
         font-weight: 400;
         color: #fff;
         position: absolute;
@@ -229,7 +231,7 @@ input, button, select {
         color: #fff;
     }
     &__img {
-        margin: -30px auto 0;
+        margin: -40px auto 0;
         max-width: calc(100vw - 40px);
         position: relative;
         img {
@@ -342,13 +344,13 @@ input, button, select {
 }
 
 .list-number {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     &.list--two-up {
         .list-number__item {
             display: flex;
         }
         .list-content {
-            margin-top: 7px;
+            margin-top: 0px;
             text-align: center;
         }
     }
@@ -407,23 +409,27 @@ input, button, select {
     margin-bottom: 20px;
     &.face-block--selfie {
         margin-bottom: 0;
-        padding-top: 20px;
+        padding-top: 10px;
         background: #0E6AA1;
     }
     &__container {
         position: relative;
     }
     &__frame {
-        background-image: url('../img/photoframe.png');
+        background-image: url(../img/photoframe.png);
         position: absolute;
         width: 100%;
-        height: calc(100% + 20px);
+        height: 100%;
+        -o-object-fit: contain;
         object-fit: contain;
         top: -20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     .block-center {
-        width: 194px;
-        height: 194px;
+        width: 180px;
+        height: 180px;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -441,7 +447,7 @@ input, button, select {
         }
     }
     &__img {
-        height: calc(100vw - 20px);
+        height: calc(100vw - 10px);
         overflow: hidden;
         img, video, canvas {
             width: 100%;
@@ -493,13 +499,13 @@ input, button, select {
 
 .footer {
     &__container {
-        padding: 45px 5px;
+        padding: 30px 5px;
         position: relative;
         background: #0E6AA1;
     }
     &__des {
         text-align: center;
-        font-size: 1rem;
+        font-size: 14px;
         font-weight: 400;
         line-height: calc(24/20);
         color: #fff;
@@ -518,8 +524,8 @@ input, button, select {
 }
 
 .camera-block {
-    padding: 90px 20px 45px;
-    margin: -80px auto 0px;
+    padding: 90px 20px 40px;
+    margin: -95px auto 0px;
     background: #0E6AA1;
     text-align: center;
 }
@@ -592,7 +598,7 @@ input, button, select {
 }
 
 .font-large-title {
-    font-size: 30px;
+    font-size: 28px;
     line-height: calc(28/30);
 }
 
@@ -603,16 +609,18 @@ input, button, select {
 
 .face-block__bottom {
     width: 100%;
-    padding: 10px 5px 40px;
+    padding: 0px 5px 30px;
+    margin-top: -10px;
     color: #fff;
     text-align: center;
     i {
         margin-right: 5px;
-        font-size: 20px;
+        font-size: 18px;
     }
     span {
         font-weight: 400;
         display: block;
+        font-size: 12px;
     }
 }
 
@@ -663,14 +671,14 @@ input, button, select {
     top: -26px;
     left: 0;
     .circle-candy {
-        width: 54px;
-        height: 54px;
+        width: 45px;
+        height: 45px;
         margin: 0 3px;
         border: 3px solid #4FABFA;
         border-radius: 50%;
         background: rgba($color: #0E6AA1, $alpha: 0.53);
         img {
-            width: 26px;
+            width: 22px;
         }
     }
 }
@@ -678,17 +686,20 @@ input, button, select {
 //clock-time
 .clock-block {
     position: relative;
+    width: 50px;
+    img {
+        width: 50px;
+    }
 }
 .wrapper-clock {
     position: absolute;
     background: #fff;
-    width: 33px;
-    height: 33px;
-    left: 15px;
-    top: 17.5px;
+    width: 30px;
+    height: 30px;
+    left: 9px;
+    top: 12.5px;
     border-radius: 50%;
-       border: 3px solid #fff;
-    
+    border: 3px solid #fff;
   }
   
   .wrapper-clock , .wrapper-clock  * {
@@ -755,3 +766,8 @@ input, button, select {
     }
   }
   
+  .camera-block {
+      h3.deep-yellow.sub-title {
+          font-size: 24px;
+      }
+  }

@@ -57,8 +57,10 @@ input, button, select {
   border-radius: 30px; }
 
 .btn-default {
-  min-width: 162px;
-  height: 50px;
+  min-width: 150px;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 45px;
   border-radius: 30px;
   background: #0E6AA1;
   border: 3px solid #1BA4FC;
@@ -128,23 +130,23 @@ input, button, select {
     overflow: hidden; }
   .logo.logo--two-up .logo__img {
     margin-left: -60px;
-    max-width: 275px; }
+    max-width: 225px; }
     .logo.logo--two-up .logo__img img {
       width: 100%;
       margin: 0; }
   .logo.logo--two-up.logo--game .logo__img {
     margin-left: -40px;
-    max-width: 60vw; }
+    max-width: 55vw; }
   .logo.logo--two-up.logo--selfie {
-    padding-top: 70px; }
+    padding-top: 45px; }
     .logo.logo--two-up.logo--selfie .logo__heading {
       position: static;
       -webkit-transform: none;
               transform: none; }
   .logo__heading {
     max-width: 155px;
-    font-size: 30px;
-    line-height: calc(28/30);
+    font-size: 28px;
+    line-height: calc(28/25);
     font-weight: 400;
     color: #fff;
     position: absolute;
@@ -165,7 +167,7 @@ input, button, select {
     font-weight: 400;
     color: #fff; }
   .logo__img {
-    margin: -30px auto 0;
+    margin: -40px auto 0;
     max-width: calc(100vw - 40px);
     position: relative; }
     .logo__img img {
@@ -259,12 +261,12 @@ input, button, select {
   text-align: center; }
 
 .list-number {
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
   .list-number.list--two-up .list-number__item {
     display: -webkit-box;
     display: flex; }
   .list-number.list--two-up .list-content {
-    margin-top: 7px;
+    margin-top: 0px;
     text-align: center; }
   .list-number.list-number--rules .list-number__list {
     padding: 0 10px;
@@ -311,21 +313,24 @@ input, button, select {
   margin-bottom: 20px; }
   .face-block.face-block--selfie {
     margin-bottom: 0;
-    padding-top: 20px;
+    padding-top: 10px;
     background: #0E6AA1; }
   .face-block__container {
     position: relative; }
   .face-block__frame {
-    background-image: url("../img/photoframe.png");
+    background-image: url(../img/photoframe.png);
     position: absolute;
     width: 100%;
-    height: calc(100% + 20px);
+    height: 100%;
     -o-object-fit: contain;
-       object-fit: contain;
-    top: -20px; }
+    object-fit: contain;
+    top: -20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
   .face-block .block-center {
-    width: 194px;
-    height: 194px;
+    width: 180px;
+    height: 180px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -341,7 +346,7 @@ input, button, select {
       border: 8px solid #4FABFA;
       border-radius: 50%; }
   .face-block__img {
-    height: calc(100vw - 20px);
+    height: calc(100vw - 10px);
     overflow: hidden; }
     .face-block__img img, .face-block__img video, .face-block__img canvas {
       width: 100%;
@@ -381,13 +386,13 @@ input, button, select {
   color: #fff; }
 
 .footer__container {
-  padding: 45px 5px;
+  padding: 30px 5px;
   position: relative;
   background: #0E6AA1; }
 
 .footer__des {
   text-align: center;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 400;
   line-height: calc(24/20);
   color: #fff; }
@@ -401,8 +406,8 @@ input, button, select {
   padding-bottom: 10px; }
 
 .camera-block {
-  padding: 90px 20px 45px;
-  margin: -80px auto 0px;
+  padding: 90px 20px 40px;
+  margin: -95px auto 0px;
   background: #0E6AA1;
   text-align: center; }
 
@@ -467,7 +472,7 @@ input, button, select {
   color: #4FABFA; }
 
 .font-large-title {
-  font-size: 30px;
+  font-size: 28px;
   line-height: calc(28/30); }
 
 .font-large-des {
@@ -476,15 +481,17 @@ input, button, select {
 
 .face-block__bottom {
   width: 100%;
-  padding: 10px 5px 40px;
+  padding: 0px 5px 30px;
+  margin-top: -10px;
   color: #fff;
   text-align: center; }
   .face-block__bottom i {
     margin-right: 5px;
-    font-size: 20px; }
+    font-size: 18px; }
   .face-block__bottom span {
     font-weight: 400;
-    display: block; }
+    display: block;
+    font-size: 12px; }
 
 .large {
   font-size: 23px;
@@ -527,25 +534,28 @@ input, button, select {
   top: -26px;
   left: 0; }
   .group-candy .circle-candy {
-    width: 54px;
-    height: 54px;
+    width: 45px;
+    height: 45px;
     margin: 0 3px;
     border: 3px solid #4FABFA;
     border-radius: 50%;
     background: rgba(14, 106, 161, 0.53); }
     .group-candy .circle-candy img {
-      width: 26px; }
+      width: 22px; }
 
 .clock-block {
-  position: relative; }
+  position: relative;
+  width: 50px; }
+  .clock-block img {
+    width: 50px; }
 
 .wrapper-clock {
   position: absolute;
   background: #fff;
-  width: 33px;
-  height: 33px;
-  left: 15px;
-  top: 17.5px;
+  width: 30px;
+  height: 30px;
+  left: 9px;
+  top: 12.5px;
   border-radius: 50%;
   border: 3px solid #fff; }
 
@@ -621,3 +631,6 @@ input, button, select {
     opacity: 1; }
   50%, 100% {
     opacity: 0; } }
+
+.camera-block h3.deep-yellow.sub-title {
+  font-size: 24px; }
