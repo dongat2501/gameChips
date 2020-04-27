@@ -392,12 +392,12 @@ input, button, select {
 }
 
 .block-countdown {
-    min-width: 65px;
-    margin-right: -5px;
+    min-width: 58px;
+    margin-right: -10px;
     color: #111;
     font-size: 22px;
-    padding: 10px 15px 10px 20px;
-    background: #317eba;
+    padding: 13px 15px;
+    background: #4fabfa;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 }
@@ -688,18 +688,17 @@ input, button, select {
 //clock-time
 .clock-block {
     position: relative;
-    width: 50px;
     img {
-        width: 50px;
+        width: 60px;
     }
 }
 .wrapper-clock {
     position: absolute;
     background: #fff;
-    width: 30px;
-    height: 30px;
-    left: 9px;
-    top: 12.5px;
+    width: 33px;
+    height: 33px;
+    left: 13.5px;
+    top: 14.5px;
     border-radius: 50%;
     border: 3px solid #fff;
   }
