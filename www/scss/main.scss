@@ -708,7 +708,7 @@ input, button, select {
     box-sizing: border-box;
   }
   
-  .pie {
+  .wrapper-clock  .pie {
     width: 50%;
     height: 100%;
     transform-origin: 100% 50%;
@@ -717,11 +717,11 @@ input, button, select {
     border: 0px solid rgba(0,0,0,0.5);
   }
   
-  .spinner {
+  .wrapper-clock  .spinner {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     z-index: 200;
     border-right: none;
-    animation: rota 32s linear forwards;
+    
   }
   
   .wrapper-clock:hover .spinner,
@@ -733,11 +733,22 @@ input, button, select {
   .wrapper-clock .filler {
     border-radius: 0 100% 100% 0 / 0 50% 50% 0;
     // border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    left: 50%;
+    left: calc(50% + 1px);
     opacity: 0;
     z-index: 100;
-    animation: opa 32s steps(1, end) forwards reverse;
     border-left: none;
+  }
+
+  .wrapper-clock-custom {
+    .filler {
+        animation: opa 32s steps(1, end) forwards reverse;
+    }
+    .spinner {
+        animation: rota 32s linear forwards;
+    }
+    .mask {
+        animation: opa 32s steps(1, end) forwards;
+    }
   }
   
   .wrapper-clock .mask {
@@ -749,7 +760,7 @@ input, button, select {
     z-index: 300;
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
-    animation: opa 32s steps(1, end) forwards;
+    
   }
   
   @keyframes rota {
