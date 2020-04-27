@@ -344,11 +344,13 @@ input, button, select {
       border: 8px solid #4FABFA;
       border-radius: 50%; }
   .face-block__img {
-    height: calc(100vw - 10px);
+    height: 100vw;
     overflow: hidden; }
     .face-block__img img, .face-block__img video, .face-block__img canvas {
       width: 100%;
-      height: auto; }
+      height: 100vw;
+      -o-object-fit: cover;
+         object-fit: cover; }
 
 .absolute-img {
   width: 178px;

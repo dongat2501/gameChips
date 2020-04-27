@@ -445,12 +445,12 @@ input, button, select {
         }
     }
     &__img {
-        height: calc(100vw - 10px);
+        height: 100vw;
         overflow: hidden;
         img, video, canvas {
             width: 100%;
-            height: auto;
-            // object-fit: cover;
+            height: 100vw;
+            object-fit: cover;
         }
     }
 }
