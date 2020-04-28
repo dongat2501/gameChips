@@ -133,7 +133,7 @@ input, button, select {
   .logo.logo--two-up .logo__img {
     margin-left: -45px;
     margin-top: -10px;
-    max-width: 290px; }
+    max-width: 240px; }
     .logo.logo--two-up .logo__img img {
       width: 100%;
       margin: 0; }
@@ -148,7 +148,7 @@ input, button, select {
               transform: none; }
   .logo__heading {
     max-width: 155px;
-    font-size: 30px;
+    font-size: 28px;
     line-height: calc(28/25);
     font-weight: 400;
     color: #fff;
