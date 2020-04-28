@@ -119,6 +119,14 @@ input, button, select {
     margin-top: 0 !important;
 }
 
+.pt-15 {
+    padding-top: 15px !important;
+}
+
+.mt--20 {
+    margin-top: -20px;
+}
+
 .mt--25 {
     margin-top: -25px;
 }
@@ -181,8 +189,9 @@ input, button, select {
             overflow: hidden;
         }
         .logo__img {
-            margin-left: -60px;
-            max-width: 235px;
+            margin-left: -45px;
+            margin-top: -10px;
+            max-width: 290px;
             img {
                 width: 100%;
                 margin: 0;
@@ -204,7 +213,7 @@ input, button, select {
     }
     &__heading {
         max-width: 155px;
-        font-size: 26px;
+        font-size: 30px;
         line-height: calc(28/25);
         font-weight: 400;
         color: #fff;
@@ -212,6 +221,7 @@ input, button, select {
         right: 25px;
         top: calc(50% + 25px);
         transform: translateY(-50%);
+        text-align: center;
         &.logo__heading--center {
             max-width: 100vw;
             margin-left: auto;
@@ -260,7 +270,7 @@ input, button, select {
 
 .mb-10 {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 
 .mb-90 {
@@ -336,6 +346,13 @@ input, button, select {
     }
 }
 
+.btn-two-up {
+    button {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+}
+
 .center-text {  
     text-align: center;
 }
@@ -345,7 +362,7 @@ input, button, select {
     &.list--two-up {
         margin-top: 10px;
         .list-number__item {
-            display: flex;
+            text-align: center;
         }
         .list-content {
             margin-top: 0px;
