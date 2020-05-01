@@ -26,7 +26,17 @@ function main() {
         return;
       }
       console.log("INFO : JEEFACETRANSFERAPI is ready !!!");
-      alert('Turn up volume?');
+      try {
+        if (sessionStorage.getItem('alerted')) {
+        } else {
+          sessionStorage.setItem('alerted', 1)
+          alert('Turn up volume?');
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+
       successCallback();
     } //end callbackReady()
   });
