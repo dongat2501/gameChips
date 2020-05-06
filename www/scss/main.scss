@@ -361,12 +361,21 @@ input, button, select {
     margin-bottom: 10px;
     &.list--two-up {
         margin-top: 10px;
+        .list-number__list {
+            padding: 0 8px;
+            flex: 1;
+        }
         .list-number__item {
+            margin: 0 auto;
             text-align: center;
         }
         .list-content {
             margin-top: 0px;
             text-align: center;
+            font-size: 15px;
+        }
+        .list-number__row {
+            margin-bottom: 20px;
         }
     }
     &.list-number--rules {
@@ -393,7 +402,7 @@ input, button, select {
         padding: 4px 8px;
     }
     &__group-img {
-        max-height: 25vh;
+        max-height: 30vh;
         padding-right: 5px;
     }
 }
@@ -548,8 +557,8 @@ input, button, select {
 }
 
 .camera-block {
-    padding: 105px 20px 40px;
-    margin: -105px auto 0px;
+    padding: 40px 20px 40px;
+    margin: -40px auto 0;
     background: #0E6AA1;
     text-align: center;
 }
@@ -714,15 +723,27 @@ input, button, select {
         width: 60px;
     }
 }
-.wrapper-clock {
+.clock-inner {
     position: absolute;
-    background: #fff;
-    width: 33px;
-    height: 33px;
-    left: 13.5px;
-    top: 14.5px;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #fff;
+    position: absolute;
+    left: 13px;
+    top: 16px;
     border-radius: 50%;
-    border: 3px solid #fff;
+}
+.wrapper-clock {
+    background: #fff;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #122641;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
   }
   
   .wrapper-clock , .wrapper-clock  * {
