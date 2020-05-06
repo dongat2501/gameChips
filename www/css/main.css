@@ -565,15 +565,28 @@ input, button, select {
   .clock-block img {
     width: 60px; }
 
-.wrapper-clock {
+.clock-inner {
   position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #fff;
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  border-radius: 50%; }
+
+.wrapper-clock {
   background: #fff;
-  width: 33px;
-  height: 33px;
-  left: 13.5px;
-  top: 14.5px;
-  border-radius: 50%;
-  border: 3px solid #fff; }
+  width: 30px;
+  height: 30px;
+  border: 1px solid #122641;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%; }
 
 .wrapper-clock, .wrapper-clock * {
   box-sizing: border-box; }
