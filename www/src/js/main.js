@@ -30,7 +30,7 @@ function main() {
         if (sessionStorage.getItem('alerted')) {
         } else {
           sessionStorage.setItem('alerted', 1)
-          alert('Turn up volume?');
+          alert('For best experience, Turn up volume?');
         }
       } catch (error) {
         console.log(error)
