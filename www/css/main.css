@@ -272,11 +272,19 @@ input, button, select {
   margin-bottom: 10px; }
   .list-number.list--two-up {
     margin-top: 10px; }
+    .list-number.list--two-up .list-number__list {
+      padding: 0 8px;
+      -webkit-box-flex: 1;
+              flex: 1; }
     .list-number.list--two-up .list-number__item {
+      margin: 0 auto;
       text-align: center; }
     .list-number.list--two-up .list-content {
       margin-top: 0px;
-      text-align: center; }
+      text-align: center;
+      font-size: 15px; }
+    .list-number.list--two-up .list-number__row {
+      margin-bottom: 20px; }
   .list-number.list-number--rules .list-number__list {
     padding: 0 10px;
     color: #fff;
@@ -295,7 +303,7 @@ input, button, select {
   .list-number__item {
     padding: 4px 8px; }
   .list-number__group-img {
-    max-height: 25vh;
+    max-height: 30vh;
     padding-right: 5px; }
 
 .bg-dark-custom {
@@ -423,8 +431,8 @@ input, button, select {
   padding-bottom: 0 !important; }
 
 .camera-block {
-  padding: 105px 20px 40px;
-  margin: -105px auto 0px;
+  padding: 40px 20px 40px;
+  margin: -40px auto 0;
   background: #0E6AA1;
   text-align: center; }
 
