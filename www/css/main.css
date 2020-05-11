@@ -76,6 +76,9 @@ input, button, select {
 .deep-yellow {
   color: #EED12F; }
 
+.yellow-bg {
+  background: #EED12F; }
+
 .blue {
   color: #38E0FF; }
 
@@ -96,6 +99,9 @@ input, button, select {
 
 .mt--25 {
   margin-top: -25px; }
+
+.pd-8 {
+  padding: 8px; }
 
 .header {
   width: 100%;
@@ -200,6 +206,9 @@ input, button, select {
   display: block;
   margin-bottom: 10px !important; }
 
+.mb-15 {
+  margin-bottom: 15px; }
+
 .mb-90 {
   margin-bottom: 90px; }
 
@@ -237,6 +246,9 @@ input, button, select {
 
 .mb-25 {
   margin-bottom: 25px; }
+
+.mb-20 {
+  margin-bottom: 20px !important; }
 
 .try-again {
   max-width: 250px;
@@ -277,7 +289,8 @@ input, button, select {
       -webkit-box-flex: 1;
               flex: 1; }
     .list-number.list--two-up .list-number__item {
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
       text-align: center; }
     .list-number.list--two-up .list-content {
       margin-top: 0px;
@@ -390,10 +403,10 @@ input, button, select {
           transform: translate(-50%, -50%); }
 
 .small-p {
-  font-size: 12px; }
+  font-size: 14px; }
 
 .p {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   line-height: calc(20/14); }
 
@@ -431,8 +444,7 @@ input, button, select {
   padding-bottom: 0 !important; }
 
 .camera-block {
-  padding: 40px 20px 40px;
-  margin: -40px auto 0;
+  padding: 20px 20px 40px;
   background: #0E6AA1;
   text-align: center; }
 
@@ -498,7 +510,7 @@ input, button, select {
 
 .font-large-title {
   font-size: 28px;
-  line-height: calc(28/30); }
+  line-height: calc(30/30); }
 
 .font-large-des {
   font-size: 24px;
