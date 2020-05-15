@@ -196,9 +196,13 @@ input, button, select {
             overflow: hidden;
         }
         .logo__img {
-            margin-left: -45px;
-            margin-top: -10px;
-            max-width: 240px;
+            // margin-left: -45px;
+            // margin-top: -10px;
+            // max-width: 240px;
+            margin-left: 5px;
+            margin-top: 25px;
+            max-width: 120px;
+
             img {
                 width: 100%;
                 margin: 0;
@@ -206,8 +210,9 @@ input, button, select {
         }
         &.logo--game {
             .logo__img {
-                margin-left: -40px;
-                max-width: 55vw;
+                margin-left: 10px;
+                max-width: 100px;
+                margin-top: 30px;
             }
         }
         &.logo--selfie {
@@ -245,13 +250,11 @@ input, button, select {
         color: #fff;
     }
     &__img {
-        margin: -40px auto 0;
-        max-width: calc(100vw - 40px);
+        margin: 60px auto 0;
+        max-width: 50vw;
         position: relative;
         img {
-           width: calc(100% + 60px);
-           margin-left: -30px;
-           height: 100%;
+           width: 100%;
            object-fit: cover;
            &.smallest-cookie {
                 width: 40px;
@@ -278,6 +281,10 @@ input, button, select {
 .mb-10 {
     display: block;
     margin-bottom: 10px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
 }
 
 .mb-15 {
@@ -573,7 +580,8 @@ input, button, select {
 }
 
 .camera-block {
-    padding: 20px 20px 40px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
     background: #0E6AA1;
     text-align: center;
 }
