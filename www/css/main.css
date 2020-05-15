@@ -137,15 +137,16 @@ input, button, select {
   .logo.logo--two-up .logo__container {
     overflow: hidden; }
   .logo.logo--two-up .logo__img {
-    margin-left: -45px;
-    margin-top: -10px;
-    max-width: 240px; }
+    margin-left: 5px;
+    margin-top: 25px;
+    max-width: 120px; }
     .logo.logo--two-up .logo__img img {
       width: 100%;
       margin: 0; }
   .logo.logo--two-up.logo--game .logo__img {
-    margin-left: -40px;
-    max-width: 55vw; }
+    margin-left: 10px;
+    max-width: 100px;
+    margin-top: 30px; }
   .logo.logo--two-up.logo--selfie {
     padding-top: 45px; }
     .logo.logo--two-up.logo--selfie .logo__heading {
@@ -177,13 +178,11 @@ input, button, select {
     font-weight: 400;
     color: #fff; }
   .logo__img {
-    margin: -40px auto 0;
-    max-width: calc(100vw - 40px);
+    margin: 60px auto 0;
+    max-width: 50vw;
     position: relative; }
     .logo__img img {
-      width: calc(100% + 60px);
-      margin-left: -30px;
-      height: 100%;
+      width: 100%;
       -o-object-fit: cover;
          object-fit: cover; }
       .logo__img img.smallest-cookie {
@@ -205,6 +204,9 @@ input, button, select {
 .mb-10 {
   display: block;
   margin-bottom: 10px !important; }
+
+.mb-5 {
+  margin-bottom: 5px !important; }
 
 .mb-15 {
   margin-bottom: 15px; }
@@ -444,7 +446,8 @@ input, button, select {
   padding-bottom: 0 !important; }
 
 .camera-block {
-  padding: 20px 20px 40px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
   background: #0E6AA1;
   text-align: center; }
 
