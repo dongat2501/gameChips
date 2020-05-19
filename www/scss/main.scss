@@ -127,12 +127,20 @@ input, button, select {
     padding-top: 15px !important;
 }
 
+.mt--10 {
+    margin-top: -10px !important;
+}
+
 .mt--20 {
     margin-top: -20px;
 }
 
 .mt--25 {
     margin-top: -25px;
+}
+
+.mt--30 {
+    margin-top: -30px;
 }
 
 .pd-8 {
@@ -146,7 +154,7 @@ input, button, select {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9;
+    z-index: 999;
     &.header--game, &.header-primary {
         background: #317eba;
     }
@@ -190,29 +198,36 @@ input, button, select {
     position: relative;
     z-index: 1;
     overflow: hidden;
-
+    &.logo--large {
+        .logo__img {
+            width: 80vw;
+        }
+    }
     &.logo--two-up {
         .logo__container {
             overflow: hidden;
         }
         .logo__img {
-            // margin-left: -45px;
-            // margin-top: -10px;
-            // max-width: 240px;
-            margin-left: 5px;
-            margin-top: 25px;
-            max-width: 120px;
+            margin-left: -10px;
+            margin-top: 10px;
+            margin-right: 0;
+            max-width: 185px;
 
             img {
                 width: 100%;
                 margin: 0;
             }
         }
+        &.logo--how {
+            .logo__img {
+                margin-top: -20px;
+            }
+        }
         &.logo--game {
             .logo__img {
-                margin-left: 10px;
-                max-width: 100px;
-                margin-top: 30px;
+                margin-left: 0;
+                max-width: 150px;
+                margin-top: 0px;
             }
         }
         &.logo--selfie {
@@ -225,12 +240,13 @@ input, button, select {
     }
     &__heading {
         max-width: 155px;
-        font-size: 28px;
+        font-size: 24px;
         line-height: calc(28/25);
         font-weight: 400;
         color: #fff;
+        // transform: translate(-10px, 15px);
         position: absolute;
-        right: 25px;
+        right: 30px;
         top: calc(50% + 25px);
         transform: translateY(-50%);
         text-align: center;
@@ -249,10 +265,13 @@ input, button, select {
         font-weight: 400;
         color: #fff;
     }
+    &__container {
+        // justify-content: center;
+    }
     &__img {
-        margin: 40px auto 0;
-        width: 48vw;
-        max-width: 200px;
+        margin: 0 auto;
+        width: 75vw;
+        max-width: 300px;
         position: relative;
         img {
            width: 100%;
@@ -374,6 +393,15 @@ input, button, select {
         margin-left: 5px;
         margin-right: 5px;
     }
+    .btn-custom {
+        button {
+            &.btn-default {
+                min-width: 0;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+        }
+    }
 }
 
 .center-text {  
@@ -408,6 +436,9 @@ input, button, select {
             color: #fff;
             font-family: Arial, Helvetica, sans-serif;
             word-break: break-word;
+            a {
+                color: #fff;
+            }
         }
     }
     .list-order {
@@ -426,7 +457,7 @@ input, button, select {
         padding: 4px 8px;
     }
     &__group-img {
-        max-height: 30vh;
+        max-height: 27vh;
         padding-right: 5px;
     }
 }
@@ -585,6 +616,10 @@ input, button, select {
     margin-bottom: 15px;
     background: #0E6AA1;
     text-align: center;
+    &.camera-block--img {
+        padding-bottom: 40px;
+        margin-bottom: 0;
+    }
 }
 
 .sub-title {
@@ -655,8 +690,8 @@ input, button, select {
 }
 
 .font-large-title {
-    font-size: 28px;
-    line-height: calc(30/30);
+    font-size: 26px;
+    line-height: calc(33/30);
 }
 
 .font-large-des {

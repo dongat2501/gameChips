@@ -94,11 +94,17 @@ input, button, select {
 .pt-15 {
   padding-top: 15px !important; }
 
+.mt--10 {
+  margin-top: -10px !important; }
+
 .mt--20 {
   margin-top: -20px; }
 
 .mt--25 {
   margin-top: -25px; }
+
+.mt--30 {
+  margin-top: -30px; }
 
 .pd-8 {
   padding: 8px; }
@@ -109,7 +115,7 @@ input, button, select {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9; }
+  z-index: 999; }
   .header.header--game, .header.header-primary {
     background: #317eba; }
   .header__center {
@@ -134,19 +140,24 @@ input, button, select {
   position: relative;
   z-index: 1;
   overflow: hidden; }
+  .logo.logo--large .logo__img {
+    width: 80vw; }
   .logo.logo--two-up .logo__container {
     overflow: hidden; }
   .logo.logo--two-up .logo__img {
-    margin-left: 5px;
-    margin-top: 25px;
-    max-width: 120px; }
+    margin-left: -10px;
+    margin-top: 10px;
+    margin-right: 0;
+    max-width: 185px; }
     .logo.logo--two-up .logo__img img {
       width: 100%;
       margin: 0; }
+  .logo.logo--two-up.logo--how .logo__img {
+    margin-top: -20px; }
   .logo.logo--two-up.logo--game .logo__img {
-    margin-left: 10px;
-    max-width: 100px;
-    margin-top: 30px; }
+    margin-left: 0;
+    max-width: 150px;
+    margin-top: 0px; }
   .logo.logo--two-up.logo--selfie {
     padding-top: 45px; }
     .logo.logo--two-up.logo--selfie .logo__heading {
@@ -155,12 +166,12 @@ input, button, select {
               transform: none; }
   .logo__heading {
     max-width: 155px;
-    font-size: 28px;
+    font-size: 24px;
     line-height: calc(28/25);
     font-weight: 400;
     color: #fff;
     position: absolute;
-    right: 25px;
+    right: 30px;
     top: calc(50% + 25px);
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
@@ -178,9 +189,9 @@ input, button, select {
     font-weight: 400;
     color: #fff; }
   .logo__img {
-    margin: 40px auto 0;
-    width: 48vw;
-    max-width: 200px;
+    margin: 0 auto;
+    width: 75vw;
+    max-width: 300px;
     position: relative; }
     .logo__img img {
       width: 100%;
@@ -280,6 +291,11 @@ input, button, select {
   margin-left: 5px;
   margin-right: 5px; }
 
+.btn-two-up .btn-custom button.btn-default {
+  min-width: 0;
+  padding-left: 12px;
+  padding-right: 12px; }
+
 .center-text {
   text-align: center; }
 
@@ -306,6 +322,8 @@ input, button, select {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     word-break: break-word; }
+    .list-number.list-number--rules .list-number__list a {
+      color: #fff; }
   .list-number .list-order {
     margin-right: 5px;
     font-size: 14px;
@@ -319,7 +337,7 @@ input, button, select {
   .list-number__item {
     padding: 4px 8px; }
   .list-number__group-img {
-    max-height: 30vh;
+    max-height: 27vh;
     padding-right: 5px; }
 
 .bg-dark-custom {
@@ -451,6 +469,9 @@ input, button, select {
   margin-bottom: 15px;
   background: #0E6AA1;
   text-align: center; }
+  .camera-block.camera-block--img {
+    padding-bottom: 40px;
+    margin-bottom: 0; }
 
 .sub-title {
   font-size: 28px;
@@ -513,8 +534,8 @@ input, button, select {
   color: #4FABFA; }
 
 .font-large-title {
-  font-size: 28px;
-  line-height: calc(30/30); }
+  font-size: 26px;
+  line-height: calc(33/30); }
 
 .font-large-des {
   font-size: 24px;
