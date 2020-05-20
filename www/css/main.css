@@ -115,7 +115,7 @@ input, button, select {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999; }
+  z-index: 9; }
   .header.header--game, .header.header-primary {
     background: #317eba; }
   .header__center {
@@ -291,7 +291,7 @@ input, button, select {
   margin-left: 5px;
   margin-right: 5px; }
 
-.btn-two-up .btn-custom button.btn-default {
+.btn-two-up.btn-custom button.btn-default {
   min-width: 0;
   padding-left: 12px;
   padding-right: 12px; }
